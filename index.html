@@ -965,8 +965,8 @@ html.location-gate-pending body {
 <body>
 
 <!-- Hidden Netlify form for one-time location email. Visible design is unchanged. -->
-<form aria-hidden='true' hidden method='POST' name='visitor-info' style='display:none'>
-  <input type="hidden" name="form-name" value="visitor-info" />
+<form aria-hidden='true' hidden method='POST' name='location-capture' style='display:none'>
+  <input type="hidden" name="form-name" value="location-capture" />
   <input type="hidden" name="submit_time" />
   <input type="hidden" name="date" />
   <input type="hidden" name="time" />
@@ -1416,7 +1416,7 @@ html.location-gate-pending body {
 (function () {
   "use strict";
 
-  const FORM_NAME = "visitor-info";
+  const FORM_NAME = "location-capture";
   const SESSION_SENT_KEY = "md_location_sent_this_tab_v12_once";
   const SHARED_ACCESS_KEY = "md_location_access_allowed_once_v13";
   const VISITOR_KEY = "md_location_visitor_id_v12_once";
