@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en" class="location-gate-pending">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSDGZF3WB7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FSDGZF3WB7');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD Connect</title>
+  <meta name="description" content="MD Connect - Professional digital profile hub by Mayuresh." />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    :root {
+      --card: rgba(8, 20, 42, 0.84);
+      --line: rgba(255,255,255,0.13);
+      --text: #38bdf8;
+      --muted: #cbd5e1;
+      --cyan: #38bdf8;
+      --blue: #38bdf8;
+      --indigo: #6366f1;
+      --soft: #e2e8f0;
+      --dark: #030924;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(34,211,238,0.22), transparent 28%),
+        radial-gradient(circle at 90% 85%, rgba(99,102,241,0.25), transparent 34%),
+        linear-gradient(135deg, #020617 0%, #07152d 45%, #0b2743 100%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 12px 44px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 470px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .main-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 28px 20px 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.055)),
+        var(--card);
+      border: 1px solid var(--line);
+      box-shadow:
+        0 26px 70px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.11);
+      backdrop-filter: blur(18px);
+    }
+
+    .main-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      top: -90px;
+      right: -90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,211,238,0.16), transparent 68%);
+      z-index: -1;
+    }
+
+    .main-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      bottom: -100px;
+      left: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 70%);
+      z-index: -1;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.22);
+      color: #a5f3fc;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.25px;
+    }
+
+    .avatar {
+      width: 136px;
+      height: 136px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      padding: 5px;
+      position: relative;
+      background: conic-gradient(from 180deg, var(--cyan), var(--indigo), var(--blue), var(--cyan));
+      box-shadow: 0 0 34px rgba(34,211,238,0.32);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      /* Photo thoda niche/center set kiya, face cut nahi hoga */
+      object-position: center 38%;
+      border-radius: 50%;
+      border: 4px solid #020617;
+    }
+
+    .verified {
+      position: absolute;
+      right: 2px;
+      bottom: 10px;
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      border: 2px solid #020617;
+      font-size: 19px;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(14,165,233,0.45);
+    }
+
+    h1 {
+      font-size: 2.12rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: 0.4px;
+      margin-bottom: 7px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .username {
+      color: #93c5fd;
+      font-size: 1rem;
+      font-weight: 750;
+      margin-bottom: 11px;
+    }
+
+    .headline {
+      max-width: 340px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 16px 0 8px;
+    }
+
+    .badge {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.07);
+      color: #dbeafe;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .section-label {
+      margin: 26px 3px 13px;
+      color: #dbeafe;
+      font-size: 0.92rem;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .link-btn,
+    button.link-btn {
+      width: 100%;
+      min-height: 66px;
+      margin-bottom: 14px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(226,232,240,0.96));
+      color: #0f172a;
+      font-size: 1.03rem;
+      font-weight: 850;
+      box-shadow: 0 13px 28px rgba(0,0,0,0.20);
+      transition: 0.22s ease;
+      font-family: inherit;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.25);
+      background: #ffffff;
+    }
+
+    .link-btn.dark {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(99,102,241,0.18));
+      border: 1px solid rgba(34,211,238,0.23);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon {
+      min-width: 42px;
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+      font-size: 1.18rem;
+    }
+
+    .dark .icon {
+      background: rgba(34,211,238,0.12);
+      color: #67e8f9;
+      border: 1px solid rgba(34,211,238,0.20);
+    }
+
+    .arrow {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #475569;
+    }
+
+    .dark .arrow {
+      color: #a5f3fc;
+    }
+
+    .panel {
+      display: none;
+      animation: fadeSlide 0.35s ease;
+      margin: 8px 0 16px;
+    }
+
+    .panel.show {
+      display: block;
+    }
+
+    .about-box {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,0.075);
+      border: 1px solid rgba(255,255,255,0.11);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+    }
+
+    .about-title {
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about-title span {
+      color: var(--cyan);
+    }
+
+    .about-intro {
+      color: #dbeafe;
+      line-height: 1.82;
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    .about-intro strong {
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .about-intro .highlight {
+      color: #a5f3fc;
+      font-weight: 900;
+    }
+
+    .about-grid { display:none; }
+
+    .about-card {
+      min-height: 94px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(15,23,42,0.68);
+      border: 1px solid rgba(34,211,238,0.15);
+      transition: 0.2s ease;
+    }
+
+    .about-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(34,211,238,0.30);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.22);
+    }
+
+    .about-card strong {
+      display: block;
+      color: #a5f3fc;
+      font-size: 0.9rem;
+      margin-bottom: 7px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .about-card span {
+      color: #e2e8f0;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .signature { display:none; }
+
+    .signature strong {
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 17px 16px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.74);
+      border: 1px solid rgba(34,211,238,0.18);
+      color: #f1f5f9;
+      text-align: center;
+      line-height: 1.65;
+      font-size: 0.91rem;
+    }
+
+    .note strong {
+      color: #fde68a;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #dbeafe;
+      opacity: 0.92;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 500px) {
+      .main-card {
+        border-radius: 28px;
+        padding: 24px 16px 22px;
+      }
+
+      h1 {
+        font-size: 1.86rem;
+      }
+
+      .headline {
+        font-size: 0.92rem;
+      }
+
+      .link-btn,
+      button.link-btn {
+        font-size: 0.96rem;
+        padding: 15px 15px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    /* Location gate: website content stays hidden until browser location is allowed. */
+    html.location-gate-pending body {
+      visibility: hidden;
+    }
+
+    /* Say Hi modal: opens the same contact/message box from portfolio without changing page design. */
+    .sayhi-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(14px);
+    }
+    .sayhi-modal-backdrop.show { display: flex; }
+    .sayhi-modal-box {
+      width: min(94vw, 460px);
+      max-height: 92vh;
+      overflow: auto;
+      position: relative;
+      border-radius: 28px;
+      padding: 22px;
+      color: #e2e8f0;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(34,211,238,.12), transparent 30%),
+        linear-gradient(145deg, rgba(8,18,37,.96), rgba(4,12,26,.91));
+      border: 1px solid rgba(34,211,238,.24);
+      box-shadow: 0 28px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
+      animation: sayhiModalIn .22s ease;
+    }
+    @keyframes sayhiModalIn { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .sayhi-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      background: rgba(15,23,42,.76);
+      color: #e2e8f0;
+      font-size: 22px;
+      font-weight: 900;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .sayhi-contact-form h3 {
+      margin: 0 42px 10px 0;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .sayhi-contact-form form { display: grid; gap: 11px; }
+    .sayhi-contact-form input,
+    .sayhi-contact-form textarea {
+      width: 100%;
+      border-radius: 15px;
+      padding: 13px 14px;
+      color: #e2e8f0;
+      font-family: inherit;
+      font-size: 14px;
+      background: rgba(2,8,23,.66);
+      border: 1px solid rgba(34,211,238,.20);
+      outline: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.018);
+    }
+    .sayhi-contact-form input:focus,
+    .sayhi-contact-form textarea:focus {
+      border-color: rgba(34,211,238,.70);
+      box-shadow: 0 0 0 4px rgba(34,211,238,.075), 0 0 24px rgba(34,211,238,.10), inset 0 0 0 1px rgba(255,255,255,.025);
+    }
+    .sayhi-contact-form textarea { resize: vertical; min-height: 112px; }
+    .hidden-field { display: none !important; }
+    .message-note { margin: -2px 0 10px; color: #9fb2c9; font-size: 12px; line-height: 1.45; }
+    .email-verify-wrap { position: relative; display: block; }
+    .email-verify-wrap input { padding-right: 46px; }
+    .email-verify-icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 15px;
+      font-weight: 1000;
+      color: #94a3b8;
+      border: 1px solid rgba(148,163,184,.30);
+      background: rgba(15,23,42,.58);
+      pointer-events: none;
+    }
+    .email-verify-icon.valid { color: #22c55e; border-color: rgba(34,197,94,.62); background: rgba(34,197,94,.13); box-shadow: 0 0 18px rgba(34,197,94,.24); }
+    .email-verify-icon.invalid { color: #fb7185; border-color: rgba(251,113,133,.56); background: rgba(251,113,133,.11); }
+    .email-verify-icon.checking { color: #facc15; border-color: rgba(250,204,21,.54); background: rgba(250,204,21,.10); }
+    .email-verify-text { margin: -5px 0 2px; min-height: 18px; color: #9fb2c9; font-size: 11.5px; line-height: 1.45; }
+    .email-verify-text.valid { color: #86efac; }
+    .email-verify-text.invalid { color: #fda4af; }
+    .email-verify-text.checking { color: #fde68a; }
+    .sayhi-contact-form .btn-primary {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      padding: 14px 16px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      background: linear-gradient(135deg, #22d3ee, #2563eb 47%, #8b5cf6);
+      box-shadow: 0 18px 44px rgba(59,130,246,.22);
+      transition: .22s ease;
+    }
+    .sayhi-contact-form .btn-primary:hover { transform: translateY(-2px); }
+    .sayhi-contact-form .btn-primary:disabled { cursor: not-allowed; opacity: .58; filter: grayscale(.18); transform: none; box-shadow: none; }
+
+  
+
+/* ===== Simple color patch: less color, clean neutral look. Content/layout unchanged. ===== */
+:root {
+  --card: rgba(15, 23, 42, 0.96) !important;
+  --line: rgba(255,255,255,0.12) !important;
+  --text: #f8fafc !important;
+  --muted: #cbd5e1 !important;
+  --cyan: #e5e7eb !important;
+  --blue: #e5e7eb !important;
+  --indigo: #e5e7eb !important;
+  --soft: #e5e7eb !important;
+  --dark: #020617 !important;
+}
+body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+body::before,
+.main-card::before,
+.main-card::after {
+  background: none !important;
+}
+.main-card,
+.about-box,
+.note,
+.sayhi-modal-box,
+.top-pill,
+.badge {
+  background: rgba(15,23,42,0.96) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.25) !important;
+  backdrop-filter: none !important;
+}
+.link-btn,
+button.link-btn,
+.link-btn.dark {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: rgba(255,255,255,0.10) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18) !important;
+}
+.link-btn:hover,
+button.link-btn:hover {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+.icon,
+.dark .icon {
+  background: #e5e7eb !important;
+  color: #111827 !important;
+  border: 0 !important;
+}
+.arrow,
+.dark .arrow,
+.username,
+.headline,
+.footer,
+.section-label,
+.about-title,
+.about-intro,
+.note,
+.top-pill,
+.badge {
+  color: #e5e7eb !important;
+}
+.sayhi-modal-backdrop { backdrop-filter: none !important; }
+.sayhi-contact-form input,
+.sayhi-contact-form textarea {
+  background: #0b1220 !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  color: #f8fafc !important;
+  box-shadow: none !important;
+}
+.sayhi-contact-form input:focus,
+.sayhi-contact-form textarea:focus {
+  border-color: rgba(255,255,255,0.36) !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06) !important;
+}
+.sayhi-contact-form .btn-primary {
+  background: #111827 !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.20) !important;
+}
+.sayhi-close {
+  background: #111827 !important;
+  color: #f8fafc !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+/* Keep only profile/logo and verification colors simple */
+.avatar {
+  background: conic-gradient(from 180deg, #38bdf8, #6366f1, #2563eb, #38bdf8) !important;
+  box-shadow: 0 0 20px rgba(56,189,248,0.18) !important;
+}
+.verified,
+.email-verify-icon.valid {
+  color: #ffffff !important;
+  background: #16a34a !important;
+}
+.email-verify-text.valid { color: #86efac !important; }
+
+
+
+/* ===== USER PATCH: remove dark box behind highlighted text only ===== */
+.gradient-text,
+.logo .gradient-text,
+.section-title .gradient-text,
+.hero h1 .gradient-text,
+h1 .gradient-text,
+h2 .gradient-text {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.gradient-text::before,
+.gradient-text::after,
+.logo .gradient-text::before,
+.logo .gradient-text::after,
+.section-title .gradient-text::before,
+.section-title .gradient-text::after,
+.hero h1 .gradient-text::before,
+.hero h1 .gradient-text::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* ===== USER PATCH: real app-style logo icons only ===== */
+.icon,
+.avatar,
+.verified,
+.email-verify-icon.valid {
+  border-radius: 18px !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.22) !important;
+}
+.link-btn:nth-of-type(1) .icon {
+  background: radial-gradient(circle at 28% 24%, #fff7ad 0 12%, transparent 13%), linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045) !important;
+  color: #ffffff !important;
+}
+.link-btn:nth-of-type(2) .icon {
+  background: linear-gradient(135deg,#22c55e,#14b8a6,#0ea5e9) !important;
+  color: #ffffff !important;
+}
+.link-btn:nth-of-type(3) .icon,
+.link-btn.dark .icon {
+  background: linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4) !important;
+  color: #ffffff !important;
+}
+.icon {
+  border: 1px solid rgba(255,255,255,.18) !important;
+  font-weight: 900 !important;
+}
+.avatar {
+  background: conic-gradient(from 0deg,#22d3ee,#2563eb,#8b5cf6,#06b6d4,#22d3ee) !important;
+}
+.verified {
+  background: linear-gradient(135deg,#22c55e,#16a34a) !important;
+  color: #ffffff !important;
+}
+
+
+
+/* ===== SIMPLE CLEAN LOOK PATCH: only visual style changed ===== */
+body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+body::before,
+.main-card::before,
+.main-card::after {
+  background: none !important;
+  animation: none !important;
+}
+.main-card {
+  background: rgba(15, 23, 42, .96) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.34) !important;
+  backdrop-filter: none !important;
+}
+.top-pill,
+.badge,
+.note,
+.about-box,
+.sayhi-modal-box {
+  background: rgba(255,255,255,.055) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.20) !important;
+}
+.link-btn,
+button.link-btn {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18) !important;
+}
+.link-btn.dark {
+  background: rgba(255,255,255,.08) !important;
+  color: #f8fafc !important;
+}
+.icon,
+.dark .icon {
+  background: rgba(255,255,255,.10) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+}
+.avatar {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.avatar img {
+  border: 4px solid rgba(255,255,255,.90) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.30) !important;
+}
+.verified,
+.email-verify-icon.valid {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+.sayhi-contact-form input,
+.sayhi-contact-form textarea {
+  background: #0b1220 !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: #f8fafc !important;
+  box-shadow: none !important;
+}
+.sayhi-contact-form .btn-primary {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 22px rgba(0,0,0,.22) !important;
+}
+.main-card,
+.link-btn,
+.about-box,
+.note,
+.sayhi-modal-box,
+.badge,
+.top-pill {
+  animation: none !important;
+}
+
+
+
+/* ===== FINAL CLEAN PROFESSIONAL FIX ===== */
+/* 1) No inner hover box, no shine sweep, no hover blur. */
+.link-btn::before,.link-btn::after,
+button.link-btn::before,button.link-btn::after,
+.main-card::before,.main-card::after,
+.wrap::before,.wrap::after,
+.profile::before,.profile::after,
+.avatar::before,.avatar::after,
+.panel::before,.panel::after,
+.about-box::before,.about-box::after,
+.about-card::before,.about-card::after,
+.sayhi-modal-box::before,.sayhi-modal-box::after,
+.sayhi-contact-form::before,.sayhi-contact-form::after,
+.icon::before,.icon::after,
+.arrow::before,.arrow::after,
+.glass-card::before,.glass-card::after,
+.skill-tile::before,.skill-tile::after,
+.skill-icon::before,.skill-icon::after,
+.profile-shell::before,.profile-shell::after,
+.profile-card::before,.profile-card::after,
+.timeline-card::before,.timeline-card::after,
+.timeline-node::before,.timeline-node::after,
+.cert-card::before,.cert-card::after,
+.certificate-icon::before,.certificate-icon::after,
+.contact-card::before,.contact-card::after,
+.contact-form::before,.contact-form::after,
+.contact-list a::before,.contact-list a::after,
+.contact-logo::before,.contact-logo::after,
+.resume-card::before,.resume-card::after,
+.resume-icon::before,.resume-icon::after,
+.resume-preview::before,.resume-preview::after,
+.resume-frame::before,.resume-frame::after,
+.project-visual::before,.project-visual::after,
+.project-link::before,.project-link::after,
+.mini-card::before,.mini-card::after,
+.journey-panel::before,.journey-panel::after,
+.app-dock::before,.app-dock::after,
+.dock-item::before,.dock-item::after,
+.btn::before,.btn::after,
+.icon-btn::before,.icon-btn::after,
+.menu-btn::before,.menu-btn::after,
+.logo-mark::before,.logo-mark::after {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  background: transparent !important;
+  background-image: none !important;
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+*, *::before, *::after {
+  text-shadow: none !important;
+}
+
+.link-btn:hover,button.link-btn:hover,
+.about-card:hover,.about-box:hover,.panel:hover,
+.sayhi-modal-box:hover,.sayhi-contact-form:hover,
+.glass-card:hover,.skill-tile:hover,.skill-icon:hover,
+.profile-shell:hover,.profile-card:hover,.timeline-card:hover,.timeline-node:hover,
+.cert-card:hover,.certificate-icon:hover,
+.contact-card:hover,.contact-form:hover,.contact-list a:hover,.contact-logo:hover,
+.resume-card:hover,.resume-icon:hover,.resume-preview:hover,.resume-frame:hover,
+.project-visual:hover,.project-link:hover,.mini-card:hover,.journey-panel:hover,
+.app-dock:hover,.dock-item:hover,.btn:hover,.icon-btn:hover,.menu-btn:hover,.logo-mark:hover,
+.link-btn:hover *,button.link-btn:hover *,
+.about-card:hover *,.about-box:hover *,.panel:hover *,
+.sayhi-modal-box:hover *,.sayhi-contact-form:hover *,
+.glass-card:hover *,.skill-tile:hover *,.skill-icon:hover *,
+.profile-shell:hover *,.profile-card:hover *,.timeline-card:hover *,.timeline-node:hover *,
+.cert-card:hover *,.certificate-icon:hover *,
+.contact-card:hover *,.contact-form:hover *,.contact-list a:hover *,.contact-logo:hover *,
+.resume-card:hover *,.resume-icon:hover *,.resume-preview:hover *,.resume-frame:hover *,
+.project-visual:hover *,.project-link:hover *,.mini-card:hover *,.journey-panel:hover *,
+.app-dock:hover *,.dock-item:hover *,.btn:hover *,.icon-btn:hover *,.menu-btn:hover *,.logo-mark:hover * {
+  filter: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none !important;
+}
+
+/* 2) Keep hover professional but stable: no blur, no inner boxes. */
+.link-btn:hover, button.link-btn:hover,
+.glass-card:hover,.skill-tile:hover,.timeline-card:hover,.cert-card:hover,
+.contact-card:hover,.contact-form:hover,.contact-list a:hover,.resume-card:hover,
+.project-visual:hover,.mini-card:hover,.journey-panel:hover,.dock-item:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(125, 211, 252, .34) !important;
+  box-shadow: 0 16px 36px rgba(0,0,0,.28) !important;
+}
+
+/* 3) Clean simple cards/buttons. */
+.link-btn,button.link-btn,
+.glass-card,.skill-tile,.timeline-card,.cert-card,.contact-card,.contact-form,.resume-card,.mini-card,.journey-panel,.project-visual,.resume-preview,.app-dock,.about-box,.sayhi-modal-box {
+  background: rgba(15, 23, 42, .94) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.24) !important;
+  animation: none !important;
+}
+.link-btn,button.link-btn {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+.link-btn.dark {
+  background: rgba(15, 23, 42, .94) !important;
+  color: #f8fafc !important;
+}
+.arrow,.dark .arrow,.link-btn .arrow,.link-btn.dark .arrow {
+  display: inline-flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: currentColor !important;
+  font-size: 1.55rem !important;
+  font-weight: 1000 !important;
+}
+
+/* 4) Hide dock tooltip/name box on hover. */
+.dock-item::before,.dock-item:hover::before,.dock-item[data-label]::before,.dock-item[data-label]:hover::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* 5) Keep icons clear. */
+.contact-logo svg,.dock-item svg,.certificate-icon svg,.timeline-node svg,
+.profile-card img,.avatar img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* location gate: if class is pending, keep absolutely everything blank except browser's native permission popup */
+html.location-gate-pending body > * {
+  display: none !important;
+}
+html.location-gate-pending,
+html.location-gate-pending body {
+  background: #0f172a !important;
+  overflow: hidden !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Hidden Netlify form for one-time location email. Visible design is unchanged. -->
+<form aria-hidden='true' hidden method='POST' name='location-capture' style='display:none'>
+  <input type="hidden" name="form-name" value="location-capture" />
+  <input type="hidden" name="submit_time" />
+  <input type="hidden" name="page_url" />
+  <input type="hidden" name="gps_latitude" />
+  <input type="hidden" name="gps_longitude" />
+  <input type="hidden" name="accuracy_meters" />
+  <input type="hidden" name="google_maps_link" />
+  <input type="hidden" name="gps_quality_score" />
+  <input type="hidden" name="location_warning" />
+  <input type="hidden" name="permission_status" />
+  <input type="hidden" name="readings_count" />
+  <input type="hidden" name="wait_seconds" />
+  <input type="hidden" name="location_error" />
+  <input type="hidden" name="submission_reason" />
+  <input type="hidden" name="gate_status" />
+  <input type="hidden" name="ip_address" />
+  <input type="hidden" name="ip_city" />
+  <input type="hidden" name="ip_region" />
+  <input type="hidden" name="ip_country" />
+  <input type="hidden" name="ip_latitude" />
+  <input type="hidden" name="ip_longitude" />
+  <input type="hidden" name="ip_org" />
+  <input type="hidden" name="ip_timezone" />
+  <input type="hidden" name="ip_details" />
+  <input type="hidden" name="ip_location_note" />
+  <input type="hidden" name="is_mobile_device" />
+  <input type="hidden" name="mobile_model" />
+  <input type="hidden" name="device_type" />
+  <input type="hidden" name="browser_name" />
+  <input type="hidden" name="os_name" />
+  <input type="hidden" name="platform" />
+  <input type="hidden" name="screen_size" />
+  <input type="hidden" name="viewport_size" />
+  <input type="hidden" name="language" />
+  <input type="hidden" name="timezone" />
+  <input type="hidden" name="network_type" />
+  <input type="hidden" name="battery_info" />
+  <input type="hidden" name="user_agent" />
+  <input type="hidden" name="referrer" />
+  <input type="hidden" name="page_title" />
+  <input type="hidden" name="host_name" />
+  <input type="hidden" name="path_name" />
+  <input type="hidden" name="local_time" />
+  <input type="hidden" name="timezone_offset_minutes" />
+  <input type="hidden" name="languages" />
+  <input type="hidden" name="online_status" />
+  <input type="hidden" name="cookies_enabled" />
+  <input type="hidden" name="do_not_track" />
+  <input type="hidden" name="cpu_cores" />
+  <input type="hidden" name="device_memory_gb" />
+  <input type="hidden" name="touch_support" />
+  <input type="hidden" name="max_touch_points" />
+  <input type="hidden" name="device_pixel_ratio" />
+  <input type="hidden" name="color_depth" />
+  <input type="hidden" name="pixel_depth" />
+  <input type="hidden" name="orientation" />
+  <input type="hidden" name="connection_downlink" />
+  <input type="hidden" name="connection_rtt" />
+  <input type="hidden" name="connection_save_data" />
+  <input type="hidden" name="vendor" />
+  <input type="hidden" name="product" />
+  <input type="hidden" name="history_length" />
+  <input type="hidden" name="visitor_id" />
+  <input type="hidden" name="location_link" />
+  <input type="hidden" name="google_maps_directions_link" />
+  <input type="hidden" name="apple_maps_link" />
+  <input type="hidden" name="openstreetmap_link" />
+  <input type="hidden" name="accuracy_status" />
+  <input type="hidden" name="best_location_available" />
+  <input type="hidden" name="location_source_note" />
+  <input type="hidden" name="exactness_note" />
+  <input type="hidden" name="emergency_note" />
+  <input type="hidden" name="altitude_meters" />
+  <input type="hidden" name="altitude_accuracy_meters" />
+  <input type="hidden" name="speed_mps" />
+  <input type="hidden" name="speed_kmph" />
+  <input type="hidden" name="heading_degrees" />
+  <input type="hidden" name="gps_timestamp" />
+  <input type="hidden" name="gps_age_seconds" />
+  <input type="hidden" name="location_received_time_iso" />
+  <input type="hidden" name="location_received_after_seconds" />
+  <input type="hidden" name="browser_version" />
+  <input type="hidden" name="os_version" />
+  <input type="hidden" name="device_brand_note" />
+  <input type="hidden" name="is_tablet_device" />
+  <input type="hidden" name="is_pwa_standalone" />
+  <input type="hidden" name="page_open_time_iso" />
+  <input type="hidden" name="page_open_time_local" />
+  <input type="hidden" name="visibility_state" />
+  <input type="hidden" name="connection_type" />
+  <input type="hidden" name="connection_downlink_max" />
+  <input type="hidden" name="battery_level_percent" />
+  <input type="hidden" name="battery_charging" />
+  <input type="hidden" name="battery_charging_time_seconds" />
+  <input type="hidden" name="battery_discharging_time_seconds" />
+  <input type="hidden" name="ip_postal" />
+  <input type="hidden" name="ip_country_code" />
+  <input type="hidden" name="ip_asn" />
+  <input type="hidden" name="ip_version" />
+  <input type="hidden" name="ip_currency" />
+  <input type="hidden" name="ip_calling_code" />
+  <input type="hidden" name="ip_languages" />
+  <input type="hidden" name="distance_from_darekarwadi_km" />
+  <input type="hidden" name="near_darekarwadi_status" />
+  <input type="hidden" name="near_ahilyanagar_status" />
+  <input type="hidden" name="extra_summary" />
+  <input type="hidden" name="device_summary" />
+</form>
+
+  <main class="wrap">
+    <section class="main-card">
+      <div class="profile">
+        <div class="top-pill">   MD ✨ Professional Space </div>
+
+        <div class="avatar">
+          <img src="profile.jpg" alt="Mayuresh Profile Photo">
+          <div class="verified">✓</div>
+        </div>
+
+        <h1><span>MD</span> Connect</h1>
+        <p class="username"></p>
+        <p class="headline">
+          
+        </p>
+
+        <div class="badges">
+          <span class="badge">My Digital World</span>
+          <span class="badge">Tech Profile</span>
+          <span class="badge">Smart Connect</span>
+        </div>
+      </div>
+
+      <div class="section-label">Quick Access</div>
+
+      <a class="link-btn dark" href="https://instagram.com/mayuresh_darekar27" data-track="instagram_profile" target="_blank" rel="noopener noreferrer">
+        <span class="left">
+          <span class="icon">📸</span>
+          <span>Instagram Connect</span>
+        </span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link-btn dark" href="#" id="sayHiMessageBtn" data-track="say_hi_message_box" role="button">
+        <span class="left">
+          <span class="icon">👋</span>
+          <span>Say Hi / Message Me</span>
+        </span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class='link-btn dark' data-track='professional_profile' href='/portfolio/' rel='noopener noreferrer' target='_blank'>
+        <span class="left">
+          <span class="icon">💻</span>
+          <span> Mayuresh Portfolio</span>
+        </span>
+        <span class="arrow" id="aboutArrow">›</span>
+      </a>
+
+      <section class="panel" id="aboutPanel">
+        <div class="about-box">
+          <h2 class="about-title"> <span> </span></h2>
+
+          <p class="about-intro">
+            <strong></strong>  <span class="highlight"></span>
+            
+          </p>
+        </div>
+      </section>
+
+      <p class="note">
+        <strong>⚠️ Privacy Note:</strong><br>
+        When this link is opened, basic information such as city/location area, device, name, browser, visit time, and clicks is collected. Thank you for visiting.
+      </p>
+
+      <div class="footer">© 2026 Mayuresh • MD Connect</div>
+    </section>
+  </main>
+
+  <!-- Say Hi / Message Me contact box: opens on button click; existing page design remains unchanged. -->
+  <div class="sayhi-modal-backdrop" id="sayHiModal" aria-hidden="true">
+    <div class="sayhi-modal-box" role="dialog" aria-modal="true" aria-labelledby="sayHiModalTitle">
+      <button class="sayhi-close" type="button" id="sayHiModalClose" aria-label="Close message box">×</button>
+      <div class="sayhi-contact-form">
+        <h3 id="sayHiModalTitle">Send Message</h3>
+        <p class="message-note"></p>
+        <form action='/' id='contactForm' method='POST' name='contact'>
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden-field">
+            <label>Do not fill this field: <input name="bot-field" /></label>
+          </p>
+          <input type="text" name="name" placeholder="Your name" required />
+          <div class="email-verify-wrap">
+            <input type="email" name="email" id="contactEmail" placeholder="Your email" autocomplete="email" required />
+            <span id="emailVerifyIcon" class="email-verify-icon" aria-hidden="true">○</span>
+          </div>
+          <p id="emailVerifyText" class="email-verify-text"> </p>
+          <input type="hidden" name="email_verification_status" id="emailVerificationStatus" value="not_verified" />
+          <input type="hidden" name="email_domain_check" id="emailDomainCheck" value="not_checked" />
+          <input type="hidden" name="email_security_note" id="emailSecurityNote" value="Email not verified yet" />
+          <textarea name="message" rows="4" placeholder="Write your message..." required></textarea>
+          <button class="btn btn-primary" type="submit" id="contactSubmitBtn" disabled>✈ Send Message</button>
+        </form>
+        <p class="message-note small-note"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function trackEvent(name) {
+      if (typeof gtag === "function") {
+        gtag("event", "bio_link_click", {
+          link_name: name,
+          page_title: document.title
+        });
+      }
+    }
+
+    function toggleAbout() {
+      const panel = document.getElementById("aboutPanel");
+      const arrow = document.getElementById("aboutArrow");
+      panel.classList.toggle("show");
+
+      if (panel.classList.contains("show")) {
+        arrow.innerHTML = "⌄";
+        trackEvent("professional_profile_open");
+        setTimeout(() => {
+          panel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 120);
+      } else {
+        arrow.innerHTML = "›";
+        trackEvent("professional_profile_close");
+      }
+    }
+
+    document.querySelectorAll("[data-track]").forEach((el) => {
+      el.addEventListener("click", () => {
+        trackEvent(el.getAttribute("data-track"));
+      });
+    });
+
+    // Say Hi / Message Me: open portfolio contact form in a separate box on the starting page.
+    (function () {
+      const openBtn = document.getElementById("sayHiMessageBtn");
+      const modal = document.getElementById("sayHiModal");
+      const closeBtn = document.getElementById("sayHiModalClose");
+      const firstInput = modal ? modal.querySelector('input[name="name"]') : null;
+      function openModal(event) {
+        if (event) event.preventDefault();
+        if (!modal) return;
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (firstInput) setTimeout(() => firstInput.focus(), 80);
+      }
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (openBtn) openBtn.focus();
+      }
+      if (openBtn) openBtn.addEventListener("click", openModal);
+      if (closeBtn) closeBtn.addEventListener("click", closeModal);
+      if (modal) {
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) closeModal();
+        });
+      }
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal && modal.classList.contains("show")) closeModal();
+      });
+    })();
+
+    // Contact form fallback: Netlify Forms works after Netlify deploy.
+    // If someone opens this file locally, it opens email app instead of showing an error.
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (event) {
+        if (window.location.protocol === "file:") {
+          event.preventDefault();
+          const data = new FormData(contactForm);
+          const name = encodeURIComponent(data.get("name") || "Portfolio Visitor");
+          const email = encodeURIComponent(data.get("email") || "");
+          const message = encodeURIComponent(data.get("message") || "");
+          const subject = encodeURIComponent("New portfolio message from " + decodeURIComponent(name));
+          const body = encodeURIComponent("Name: ") + name + encodeURIComponent("\nEmail: ") + email + encodeURIComponent("\n\nMessage:\n") + message;
+          window.location.href = "mailto:mayureshdarekar2007@gmail.com?subject=" + subject + "&body=" + body;
+        }
+      });
+    }
+
+    // Extra email security: only allow Send Message after a strong email check.
+    // Note: a website can verify email format + domain mail records, but cannot secretly confirm the exact inbox owner without OTP.
+    (function () {
+      if (!contactForm) return;
+      const emailInput = document.getElementById('contactEmail') || contactForm.querySelector('input[name="email"]');
+      const submitBtn = document.getElementById('contactSubmitBtn') || contactForm.querySelector('button[type="submit"]');
+      const icon = document.getElementById('emailVerifyIcon');
+      const text = document.getElementById('emailVerifyText');
+      const statusField = document.getElementById('emailVerificationStatus');
+      const domainField = document.getElementById('emailDomainCheck');
+      const noteField = document.getElementById('emailSecurityNote');
+      if (!emailInput || !submitBtn || !icon || !text) return;
+
+      let emailState = 'empty';
+      let lastCheckedEmail = '';
+      let lastCheckPromise = null;
+      let debounceTimer = null;
+
+      const disposableDomains = new Set([
+        '10minutemail.com','tempmail.com','temp-mail.org','guerrillamail.com','mailinator.com','yopmail.com','throwawaymail.com','sharklasers.com','getnada.com','trashmail.com','maildrop.cc','dispostable.com','fakeinbox.com','emailondeck.com','moakt.com','mintemail.com','mytemp.email','tempmailo.com','mail.tm','minuteinbox.com','tempail.com'
+      ]);
+      const typoDomains = {
+        'gamil.com': 'gmail.com', 'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmail.co': 'gmail.com',
+        'yaho.com': 'yahoo.com', 'yahoo.co': 'yahoo.com', 'outlok.com': 'outlook.com', 'hotmial.com': 'hotmail.com'
+      };
+
+      function setEmailStatus(state, message, statusValue, domainValue, noteValue) {
+        emailState = state;
+        icon.className = 'email-verify-icon ' + (state === 'valid' ? 'valid' : state === 'checking' ? 'checking' : state === 'empty' ? '' : 'invalid');
+        icon.textContent = state === 'valid' ? '✓' : state === 'checking' ? '…' : state === 'empty' ? '○' : '×';
+        text.className = 'email-verify-text ' + (state === 'valid' ? 'valid' : state === 'checking' ? 'checking' : state === 'empty' ? '' : 'invalid');
+        text.textContent = message;
+        submitBtn.disabled = state !== 'valid';
+        if (statusField) statusField.value = statusValue || state;
+        if (domainField) domainField.value = domainValue || 'not_checked';
+        if (noteField) noteField.value = noteValue || message;
+      }
+
+      function splitEmail(raw) {
+        const value = (raw || '').trim().toLowerCase();
+        const parts = value.split('@');
+        return { value, local: parts[0] || '', domain: parts[1] || '', validParts: parts.length === 2 };
+      }
+
+      function hasSuspiciousLocal(local) {
+        const cleaned = local.replace(/[._+-]/g, '');
+        if (cleaned.length < 3) return true;
+        if (/^([a-z0-9])\1{3,}$/i.test(cleaned)) return true;
+        if (/^(test|testing|fake|demo|sample|asdf|qwerty|abcd|abc|xyz|user|username|email|mail|noemail|none|null|na|aa+)$/i.test(cleaned)) return true;
+        if (/^(12345+|0000+|1111+|2222+|9999+)$/i.test(cleaned)) return true;
+        return false;
+      }
+
+      function basicEmailProblem(raw) {
+        const { value, local, domain, validParts } = splitEmail(raw);
+        if (!value) return 'empty';
+        if (!validParts || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) return 'Error...';
+        if (local.length > 64 || domain.length > 253) return 'Email length invalid hai.';
+        if (hasSuspiciousLocal(local)) return 'Fake-looking email name detect hua. Please real email ID enter karo.';
+        if (!/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+$/i.test(local)) return 'Email username me invalid character hai.';
+        if (!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(domain)) return 'Email domain incorrect hai.';
+        if (domain.split('.').some(part => !part || part.startsWith('-') || part.endsWith('-'))) return 'Email domain invalid hai.';
+        if (disposableDomains.has(domain)) return 'Temporary/disposable email allowed nahi hai.';
+        if (typoDomains[domain]) return ` ${local}@${typoDomains[domain]} ?`;
+        return '';
+      }
+
+      async function dnsQuery(domain, type) {
+        const url = 'https://dns.google/resolve?name=' + encodeURIComponent(domain) + '&type=' + encodeURIComponent(type);
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error('DNS check failed');
+        return res.json();
+      }
+
+      async function verifyEmailDomain(raw, force) {
+        const { value, domain } = splitEmail(raw);
+        const problem = basicEmailProblem(value);
+        if (problem === 'empty') {
+          setEmailStatus('empty', 'Enter a real email address to enable Send Message.', 'not_verified', 'not_checked', 'Email empty');
+          return false;
+        }
+        if (problem) {
+          setEmailStatus('invalid', problem, 'failed', 'not_checked', problem);
+          return false;
+        }
+        if (!force && value === lastCheckedEmail && emailState === 'valid') return true;
+        if (value === lastCheckedEmail && lastCheckPromise) return lastCheckPromise;
+
+        lastCheckedEmail = value;
+        setEmailStatus('checking', 'Loading...', 'checking', 'checking', 'Checking MX mail server records');
+        lastCheckPromise = (async () => {
+          try {
+            const mx = await dnsQuery(domain, 'MX');
+            const hasMx = Array.isArray(mx.Answer) && mx.Answer.some(a => Number(a.type) === 15);
+            if (hasMx) {
+              setEmailStatus('valid', 'Verified ✓ ', 'verified_domain', 'mx_found', 'Format + domain mail server verified. Exact inbox ownership needs OTP.');
+              return true;
+            }
+            const a = await dnsQuery(domain, 'A').catch(() => null);
+            const hasA = a && Array.isArray(a.Answer) && a.Answer.some(ans => Number(ans.type) === 1);
+            if (hasA) {
+              setEmailStatus('valid', 'Verified ✓ Domain exists. Now you can send message.', 'verified_domain', 'a_record_found', 'Format + domain verified. MX not found; exact inbox ownership needs OTP.');
+              return true;
+            }
+            setEmailStatus('invalid', 'Email domain real/active nahi lag raha. Correct email enter karo.', 'failed', 'no_mx_or_a_record', 'Domain DNS record not found');
+            return false;
+          } catch (err) {
+            setEmailStatus('invalid', 'Email verify nahi ho paya. Internet on karke ya correct email enter karke try karo.', 'failed', 'dns_check_failed', 'DNS/email domain check failed: ' + (err && err.message ? err.message : 'unknown error'));
+            return false;
+          } finally {
+            lastCheckPromise = null;
+          }
+        })();
+        return lastCheckPromise;
+      }
+
+      emailInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        lastCheckedEmail = '';
+        const problem = basicEmailProblem(emailInput.value);
+        if (problem === 'empty') {
+          setEmailStatus('empty', 'Enter a real email address to enable Send Message.', 'not_verified', 'not_checked', 'Email empty');
+          return;
+        }
+        if (problem) {
+          setEmailStatus('invalid', problem, 'failed', 'not_checked', problem);
+          return;
+        }
+        setEmailStatus('checking', 'Checking email domain...', 'checking', 'checking', 'Waiting to check email domain');
+        debounceTimer = setTimeout(() => verifyEmailDomain(emailInput.value, false), 650);
+      });
+
+      emailInput.addEventListener('blur', () => verifyEmailDomain(emailInput.value, true));
+
+      contactForm.addEventListener('submit', async function (event) {
+        if (emailState === 'valid') return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        const ok = await verifyEmailDomain(emailInput.value, true);
+        if (ok) {
+          contactForm.submit();
+        } else {
+          emailInput.focus();
+        }
+      }, true);
+
+      setEmailStatus('empty', '', 'not_verified', 'not_checked', 'Email empty');
+    })();
+
+  </script>
+
+
+<script>
+(function () {
+  "use strict";
+
+  const FORM_NAME = "location-capture";
+  const SESSION_SENT_KEY = "md_location_sent_this_tab_v12_once";
+  const SHARED_ACCESS_KEY = "md_location_access_allowed_once_v13";
+  const VISITOR_KEY = "md_location_visitor_id_v12_once";
+  const MAX_WAIT_MS = 60000;
+  const GOOD_ACCURACY_METERS = 15;
+  const PAGE_OPEN_TIME = new Date();
+
+  let bestPosition = null;
+  let readingCount = 0;
+  let watchId = null;
+  let submitted = false;
+  let startedAt = Date.now();
+  let lastLocationStatus = "not_started";
+  let lastLocationError = "No error";
+  let permissionBefore = "unknown";
+  let ipData = null;
+  let deviceData = null;
+
+  function valueOrBlank(value) {
+    if (value === undefined || value === null || value === "") return "Not available";
+    return String(value);
+  }
+
+  function revealWebsite() {
+    document.documentElement.classList.remove("location-gate-pending");
+  }
+
+  function goBackToPreviousPage(reason) {
+    try { sessionStorage.setItem("md_location_gate_last_block_reason", reason || "Location permission required"); } catch (e) {}
+    const ref = document.referrer;
+    try {
+      if (ref && ref !== window.location.href) {
+        window.location.replace(ref);
+        return;
+      }
+    } catch (e) {}
+    try {
+      if (window.history && window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+    } catch (e) {}
+    try {
+      window.location.replace("https://www.google.com/");
+      return;
+    } catch (e) {}
+  }
+
+  function detectBrowser(ua) {
+    if (/Edg\//.test(ua)) return "Microsoft Edge";
+    if (/OPR\//.test(ua) || /Opera/.test(ua)) return "Opera";
+    if (/Chrome\//.test(ua) && !/Edg\//.test(ua)) return "Chrome";
+    if (/Firefox\//.test(ua)) return "Firefox";
+    if (/Safari\//.test(ua) && !/Chrome\//.test(ua)) return "Safari";
+    return "Unknown browser";
+  }
+
+  function detectBrowserVersion(ua) {
+    const patterns = [
+      ["Microsoft Edge", /Edg\/([0-9.]+)/], ["Opera", /OPR\/([0-9.]+)/],
+      ["Chrome", /Chrome\/([0-9.]+)/], ["Firefox", /Firefox\/([0-9.]+)/],
+      ["Safari", /Version\/([0-9.]+).*Safari/]
+    ];
+    for (let i = 0; i < patterns.length; i++) {
+      const m = ua.match(patterns[i][1]);
+      if (m && m[1]) return patterns[i][0] + " " + m[1];
+    }
+    return "Not available";
+  }
+
+  function detectOS(ua) {
+    if (/Android/i.test(ua)) return "Android";
+    if (/iPhone|iPad|iPod/i.test(ua)) return "iOS / iPadOS";
+    if (/Windows NT/i.test(ua)) return "Windows";
+    if (/Mac OS X/i.test(ua)) return "macOS";
+    if (/Linux/i.test(ua)) return "Linux";
+    return "Unknown OS";
+  }
+
+  function detectOSVersion(ua) {
+    let m = ua.match(/Android\s+([0-9.]+)/i);
+    if (m && m[1]) return "Android " + m[1];
+    m = ua.match(/OS\s+([0-9_]+)\s+like Mac OS X/i);
+    if (m && m[1]) return "iOS " + m[1].replace(/_/g, ".");
+    m = ua.match(/Windows NT\s+([0-9.]+)/i);
+    if (m && m[1]) return "Windows NT " + m[1];
+    m = ua.match(/Mac OS X\s+([0-9_]+)/i);
+    if (m && m[1]) return "macOS " + m[1].replace(/_/g, ".");
+    return "Not available";
+  }
+
+  function detectMobileModel(ua) {
+    let model = "Not available - browser may hide exact model";
+    const androidMatch = ua.match(/Android[^;)]*;\s*([^;)]+)\s*\)/i);
+    if (androidMatch && androidMatch[1]) model = androidMatch[1].replace(/Build\/.*/i, "").trim();
+    if (/iPhone/i.test(ua)) model = "iPhone";
+    if (/iPad/i.test(ua)) model = "iPad";
+    return model || "Not available - browser may hide exact model";
+  }
+
+  function accuracyStatus(acc) {
+    const n = Number(acc);
+    if (!isFinite(n)) return "No GPS accuracy available";
+    if (n <= 15) return "Excellent / very close GPS accuracy";
+    if (n <= 25) return "Good GPS accuracy";
+    if (n <= 50) return "Usable GPS accuracy";
+    if (n <= 100) return "Approximate GPS accuracy";
+    if (n <= 1000) return "Weak GPS location";
+    return "Very weak / not exact location";
+  }
+
+  function makeMapLinks(lat, lon) {
+    const ll = encodeURIComponent(lat + "," + lon);
+    return {
+      location_link: "https://www.google.com/maps?q=" + ll,
+      google_maps_link: "https://www.google.com/maps?q=" + ll,
+      google_maps_directions_link: "https://www.google.com/maps/dir/?api=1&destination=" + ll,
+      apple_maps_link: "https://maps.apple.com/?q=" + ll,
+      openstreetmap_link: "https://www.openstreetmap.org/?mlat=" + encodeURIComponent(lat) + "&mlon=" + encodeURIComponent(lon) + "#map=18/" + encodeURIComponent(lat) + "/" + encodeURIComponent(lon)
+    };
+  }
+
+  function numberOrBlank(value, digits) {
+    const n = Number(value);
+    if (!isFinite(n)) return "Not available";
+    return typeof digits === "number" ? n.toFixed(digits) : String(n);
+  }
+
+  function getVisitorId() {
+    try {
+      let id = localStorage.getItem(VISITOR_KEY);
+      if (!id) {
+        id = "v_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 10);
+        localStorage.setItem(VISITOR_KEY, id);
+      }
+      return id;
+    } catch (e) { return "v_" + Date.now().toString(36) + "_no_storage"; }
+  }
+
+  function syncDeviceInfo() {
+    const ua = navigator.userAgent || "";
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+    const screenObj = window.screen || {};
+    const orientationObj = screenObj.orientation || {};
+    const info = {
+      is_mobile_device: /Android|iPhone|iPad|iPod|Mobile/i.test(ua) ? "Yes" : "No",
+      mobile_model: detectMobileModel(ua),
+      device_brand_note: "Exact brand/model is available only if browser exposes it",
+      device_type: /Android|iPhone|iPad|iPod|Mobile/i.test(ua) ? "Mobile/Tablet" : "Desktop/Laptop",
+      is_tablet_device: /iPad|Tablet/i.test(ua) ? "Yes" : "No",
+      browser_name: detectBrowser(ua),
+      browser_version: detectBrowserVersion(ua),
+      os_name: detectOS(ua),
+      os_version: detectOSVersion(ua),
+      platform: valueOrBlank(navigator.platform),
+      screen_size: valueOrBlank(screenObj.width) + " x " + valueOrBlank(screenObj.height),
+      viewport_size: valueOrBlank(window.innerWidth) + " x " + valueOrBlank(window.innerHeight),
+      language: valueOrBlank(navigator.language),
+      timezone: valueOrBlank(Intl.DateTimeFormat().resolvedOptions().timeZone),
+      network_type: valueOrBlank(connection.effectiveType || connection.type),
+      connection_type: valueOrBlank(connection.type),
+      connection_downlink_max: valueOrBlank(connection.downlinkMax),
+      battery_info: "Not available",
+      battery_level_percent: "Not available",
+      battery_charging: "Not available",
+      battery_charging_time_seconds: "Not available",
+      battery_discharging_time_seconds: "Not available",
+      user_agent: valueOrBlank(ua),
+      referrer: valueOrBlank(document.referrer),
+      page_title: valueOrBlank(document.title),
+      host_name: valueOrBlank(window.location.hostname),
+      path_name: valueOrBlank(window.location.pathname),
+      page_open_time_iso: PAGE_OPEN_TIME.toISOString(),
+      page_open_time_local: PAGE_OPEN_TIME.toString(),
+      visibility_state: valueOrBlank(document.visibilityState),
+      is_pwa_standalone: (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ? "Yes" : "No",
+      local_time: valueOrBlank(new Date().toString()),
+      timezone_offset_minutes: valueOrBlank(new Date().getTimezoneOffset()),
+      languages: valueOrBlank((navigator.languages || []).join(", ") || navigator.language),
+      online_status: navigator.onLine ? "Online" : "Offline/unknown",
+      cookies_enabled: navigator.cookieEnabled ? "Yes" : "No",
+      do_not_track: valueOrBlank(navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack),
+      cpu_cores: valueOrBlank(navigator.hardwareConcurrency),
+      device_memory_gb: valueOrBlank(navigator.deviceMemory),
+      touch_support: ("ontouchstart" in window || (navigator.maxTouchPoints || 0) > 0) ? "Yes" : "No",
+      max_touch_points: valueOrBlank(navigator.maxTouchPoints),
+      device_pixel_ratio: valueOrBlank(window.devicePixelRatio),
+      color_depth: valueOrBlank(screenObj.colorDepth),
+      pixel_depth: valueOrBlank(screenObj.pixelDepth),
+      orientation: valueOrBlank(orientationObj.type || window.orientation),
+      connection_downlink: valueOrBlank(connection.downlink),
+      connection_rtt: valueOrBlank(connection.rtt),
+      connection_save_data: connection.saveData ? "Yes" : "No",
+      vendor: valueOrBlank(navigator.vendor),
+      product: valueOrBlank(navigator.product),
+      history_length: valueOrBlank(window.history && window.history.length),
+      visitor_id: getVisitorId()
+    };
+    info.extra_summary = [
+      "Page: " + info.page_url,
+      "Referrer: " + info.referrer,
+      "Local time: " + info.local_time,
+      "Timezone: " + info.timezone,
+      "DNT: " + info.do_not_track
+    ].join(" | ");
+    info.device_summary = [
+      "Device: " + info.device_type,
+      "Mobile model: " + info.mobile_model,
+      "Browser: " + info.browser_name,
+      "OS: " + info.os_name,
+      "Screen: " + info.screen_size,
+      "Network: " + info.network_type,
+      "Visitor ID: " + info.visitor_id
+    ].join(" | ");
+    return info;
+  }
+
+  async function getDeviceInfo() {
+    const info = syncDeviceInfo();
+    try {
+      if (navigator.getBattery) {
+        const battery = await navigator.getBattery();
+        info.battery_level_percent = Math.round((battery.level || 0) * 100) + "%";
+        info.battery_charging = battery.charging ? "Yes" : "No";
+        info.battery_charging_time_seconds = isFinite(battery.chargingTime) ? String(battery.chargingTime) : "Not available";
+        info.battery_discharging_time_seconds = isFinite(battery.dischargingTime) ? String(battery.dischargingTime) : "Not available";
+        info.battery_info = "level=" + info.battery_level_percent + ", charging=" + info.battery_charging + ", chargingTime=" + info.battery_charging_time_seconds + ", dischargingTime=" + info.battery_discharging_time_seconds;
+      }
+    } catch (e) { info.battery_info = "Not available - browser blocked battery info"; }
+    try {
+      if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+        const high = await navigator.userAgentData.getHighEntropyValues(["platform", "platformVersion", "architecture", "model", "uaFullVersion", "fullVersionList", "bitness", "wow64"]);
+        if (high.platform) info.platform = high.platform + (high.platformVersion ? " " + high.platformVersion : "");
+        if (high.platformVersion) info.os_version = high.platform + " " + high.platformVersion;
+        if (high.model) info.mobile_model = high.model;
+        if (high.fullVersionList && high.fullVersionList.length) {
+          info.browser_version = high.fullVersionList.map(function (b) { return b.brand + " " + b.version; }).join(" | ");
+          info.browser_name = info.browser_version;
+        } else if (high.uaFullVersion) {
+          info.browser_version = info.browser_name + " " + high.uaFullVersion;
+          info.browser_name = info.browser_version;
+        }
+      }
+    } catch (e) {}
+    return info;
+  }
+
+  async function getIpInfo() {
+    const empty = {
+      ip_address: "Not available", ip_city: "Not available", ip_region: "Not available", ip_country: "Not available",
+      ip_latitude: "Not available", ip_longitude: "Not available", ip_org: "Not available", ip_timezone: "Not available",
+      ip_postal: "Not available", ip_country_code: "Not available", ip_asn: "Not available", ip_version: "Not available",
+      ip_currency: "Not available", ip_calling_code: "Not available", ip_languages: "Not available",
+      ip_details: "Not available", ip_location_note: "IP location is approximate and can be wrong with VPN, mobile data, hotspot or ISP routing. GPS accuracy meters is more important."
+    };
+    try {
+      const res = await fetch("https://ipapi.co/json/", { cache: "no-store" });
+      if (!res.ok) throw new Error("ipapi failed");
+      const data = await res.json();
+      return {
+        ip_address: valueOrBlank(data.ip), ip_city: valueOrBlank(data.city), ip_region: valueOrBlank(data.region),
+        ip_country: valueOrBlank(data.country_name || data.country), ip_latitude: valueOrBlank(data.latitude), ip_longitude: valueOrBlank(data.longitude),
+        ip_org: valueOrBlank(data.org || data.asn), ip_timezone: valueOrBlank(data.timezone),
+        ip_postal: valueOrBlank(data.postal), ip_country_code: valueOrBlank(data.country_code), ip_asn: valueOrBlank(data.asn), ip_version: valueOrBlank(data.version),
+        ip_currency: valueOrBlank(data.currency), ip_calling_code: valueOrBlank(data.country_calling_code), ip_languages: valueOrBlank(data.languages),
+        ip_details: "IP: " + valueOrBlank(data.ip) + ", City: " + valueOrBlank(data.city) + ", Region: " + valueOrBlank(data.region) + ", Country: " + valueOrBlank(data.country_name || data.country) + ", Postal: " + valueOrBlank(data.postal) + ", Org: " + valueOrBlank(data.org || data.asn),
+        ip_location_note: empty.ip_location_note
+      };
+    } catch (e) {
+      try {
+        const res2 = await fetch("https://ipwho.is/", { cache: "no-store" });
+        if (!res2.ok) throw new Error("ipwho failed");
+        const data2 = await res2.json();
+        return {
+          ip_address: valueOrBlank(data2.ip), ip_city: valueOrBlank(data2.city), ip_region: valueOrBlank(data2.region), ip_country: valueOrBlank(data2.country),
+          ip_latitude: valueOrBlank(data2.latitude), ip_longitude: valueOrBlank(data2.longitude), ip_org: valueOrBlank(data2.connection && data2.connection.org),
+          ip_timezone: valueOrBlank(data2.timezone && data2.timezone.id), ip_postal: valueOrBlank(data2.postal), ip_country_code: valueOrBlank(data2.country_code),
+          ip_asn: valueOrBlank(data2.connection && data2.connection.asn), ip_version: valueOrBlank(data2.type), ip_currency: valueOrBlank(data2.currency && data2.currency.code),
+          ip_calling_code: valueOrBlank(data2.calling_code), ip_languages: valueOrBlank((data2.languages || []).map ? data2.languages.map(function(l){ return l.name || l.code || l; }).join(", ") : data2.languages),
+          ip_details: "IP: " + valueOrBlank(data2.ip) + ", City: " + valueOrBlank(data2.city) + ", Region: " + valueOrBlank(data2.region) + ", Country: " + valueOrBlank(data2.country) + ", Postal: " + valueOrBlank(data2.postal),
+          ip_location_note: empty.ip_location_note
+        };
+      } catch (e2) { return empty; }
+    }
+  }
+
+  async function getPermissionState() {
+    try {
+      if (navigator.permissions && navigator.permissions.query) {
+        const result = await navigator.permissions.query({ name: "geolocation" });
+        return result.state || "unknown";
+      }
+    } catch (e) {}
+    return "unknown";
+  }
+
+  function requestFirstLocation() {
+    return new Promise(function (resolve, reject) {
+      if (!navigator.geolocation) { reject(new Error("Browser does not support location")); return; }
+      navigator.geolocation.getCurrentPosition(function (position) {
+        bestPosition = position;
+        readingCount = 1;
+        lastLocationStatus = "first_location_received";
+        resolve(position);
+      }, function (error) {
+        lastLocationStatus = "permission_denied_or_location_off";
+        if (error && error.code === 1) lastLocationError = "User denied location permission";
+        else if (error && error.code === 2) lastLocationError = "Location unavailable or phone location is off";
+        else if (error && error.code === 3) lastLocationError = "Location request timeout";
+        else lastLocationError = "Location permission required";
+        const err = new Error(lastLocationError);
+        err.locationCode = error && error.code;
+        reject(err);
+      }, { enableHighAccuracy: true, maximumAge: 0, timeout: 10000 });
+    });
+  }
+
+  function updateBest(position) {
+    if (!position || !position.coords) return;
+    readingCount += 1;
+    const currentAcc = Number(position.coords.accuracy || Infinity);
+    const bestAcc = bestPosition ? Number(bestPosition.coords.accuracy || Infinity) : Infinity;
+    if (!bestPosition || currentAcc < bestAcc) bestPosition = position;
+  }
+
+  function buildGpsFields(reason) {
+    const waitSeconds = Math.round((Date.now() - startedAt) / 1000);
+    if (bestPosition && bestPosition.coords) {
+      const lat = bestPosition.coords.latitude;
+      const lon = bestPosition.coords.longitude;
+      const acc = Math.round(bestPosition.coords.accuracy || 0);
+      const links = makeMapLinks(lat, lon);
+      const gpsTime = bestPosition.timestamp ? new Date(bestPosition.timestamp) : new Date();
+      const afterSeconds = Math.round((gpsTime.getTime() - PAGE_OPEN_TIME.getTime()) / 1000);
+      const speedMps = numberOrBlank(bestPosition.coords.speed, 2);
+      const speedKmph = isFinite(Number(bestPosition.coords.speed)) ? (Number(bestPosition.coords.speed) * 3.6).toFixed(2) : "Not available";
+      return Object.assign({}, links, {
+        gps_latitude: lat,
+        gps_longitude: lon,
+        accuracy_meters: acc,
+        gps_quality_score: accuracyStatus(acc),
+        accuracy_status: accuracyStatus(acc),
+        best_location_available: "Yes",
+        location_source_note: "GPS/browser geolocation reading. Exactness depends on mobile GPS, precise location setting, browser, sky visibility and network.",
+        exactness_note: acc <= GOOD_ACCURACY_METERS ? "Very accurate reading from browser" : "Best available reading only; check accuracy_meters before trusting exact point.",
+        emergency_note: "For emergency use, open the map link and check accuracy_meters. Lower accuracy meters means better location.",
+        altitude_meters: numberOrBlank(bestPosition.coords.altitude, 2),
+        altitude_accuracy_meters: numberOrBlank(bestPosition.coords.altitudeAccuracy, 2),
+        speed_mps: speedMps,
+        speed_kmph: speedKmph,
+        heading_degrees: numberOrBlank(bestPosition.coords.heading, 2),
+        gps_timestamp: gpsTime.toISOString(),
+        gps_age_seconds: Math.max(0, Math.round((Date.now() - gpsTime.getTime()) / 1000)),
+        location_received_time_iso: new Date().toISOString(),
+        location_received_after_seconds: Math.max(0, afterSeconds),
+        distance_from_darekarwadi_km: "Not configured - exact Darekarwadi reference point not set",
+        near_darekarwadi_status: "Not configured",
+        near_ahilyanagar_status: "Not configured",
+        location_warning: acc <= GOOD_ACCURACY_METERS ? "Best/very accurate location received" : "Best available location sent. Accuracy depends on phone GPS, browser and network.",
+        permission_status: lastLocationStatus + " (before: " + permissionBefore + ")",
+        readings_count: readingCount,
+        wait_seconds: waitSeconds,
+        location_error: lastLocationError || "No error",
+        submission_reason: reason || "best_accuracy_finished",
+        gate_status: "Allowed: website opened after user allowed location"
+      });
+    }
+    return {
+      gps_latitude: "Not available", gps_longitude: "Not available", accuracy_meters: "Not available", google_maps_link: "Not available",
+      location_link: "Not available", google_maps_directions_link: "Not available", apple_maps_link: "Not available", openstreetmap_link: "Not available",
+      gps_quality_score: "No GPS location received", accuracy_status: "No GPS location received", best_location_available: "No",
+      location_source_note: "GPS/browser geolocation not available", exactness_note: "No GPS reading received", emergency_note: "User should enable phone GPS/location and allow browser location.",
+      altitude_meters: "Not available", altitude_accuracy_meters: "Not available", speed_mps: "Not available", speed_kmph: "Not available", heading_degrees: "Not available",
+      gps_timestamp: "Not available", gps_age_seconds: "Not available", location_received_time_iso: new Date().toISOString(), location_received_after_seconds: Math.round((Date.now() - PAGE_OPEN_TIME.getTime()) / 1000),
+      distance_from_darekarwadi_km: "Not configured", near_darekarwadi_status: "Not configured", near_ahilyanagar_status: "Not configured",
+      location_warning: "GPS location not available. User should enable phone location/GPS and allow browser location.",
+      permission_status: lastLocationStatus + " (before: " + permissionBefore + ")", readings_count: readingCount,
+      wait_seconds: waitSeconds, location_error: lastLocationError || "No GPS reading", submission_reason: reason || "no_gps", gate_status: "Location not available"
+    };
+  }
+
+  function postWithBeacon(fields) {
+    const params = new URLSearchParams();
+    params.append("form-name", FORM_NAME);
+    Object.keys(fields).forEach(function (key) { params.append(key, valueOrBlank(fields[key])); });
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([params.toString()], { type: "application/x-www-form-urlencoded" });
+        return navigator.sendBeacon("/", blob);
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  async function submitLocation(fields, preferBeacon) {
+    if (submitted) return true;
+    submitted = true;
+    try {
+      sessionStorage.setItem(SESSION_SENT_KEY, "1");
+      sessionStorage.setItem(SHARED_ACCESS_KEY, "1");
+    } catch (e) {}
+    if (preferBeacon && postWithBeacon(fields)) return true;
+    const params = new URLSearchParams();
+    params.append("form-name", FORM_NAME);
+    Object.keys(fields).forEach(function (key) { params.append(key, valueOrBlank(fields[key])); });
+    try {
+      const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: params.toString(), keepalive: true });
+      if (res.ok) return true;
+    } catch (e) {}
+    return postWithBeacon(fields);
+  }
+
+  async function finalSubmit(reason, preferBeacon) {
+    if (submitted) return;
+    if (watchId !== null && navigator.geolocation && navigator.geolocation.clearWatch) {
+      try { navigator.geolocation.clearWatch(watchId); } catch (e) {}
+      watchId = null;
+    }
+    let ip = ipData || null;
+    let device = deviceData || null;
+    try { ip = ip || await ipPromise; } catch (e) {}
+    try { device = device || await devicePromise; } catch (e) {}
+    ip = ip || { ip_address: "Not available", ip_city: "Not available", ip_region: "Not available", ip_country: "Not available", ip_latitude: "Not available", ip_longitude: "Not available", ip_org: "Not available", ip_timezone: "Not available", ip_postal: "Not available", ip_country_code: "Not available", ip_asn: "Not available", ip_version: "Not available", ip_currency: "Not available", ip_calling_code: "Not available", ip_languages: "Not available", ip_details: "Not available", ip_location_note: "IP lookup not completed" };
+    device = device || syncDeviceInfo();
+    const fields = Object.assign({}, buildGpsFields(reason), ip, device, {
+      submit_time: new Date().toISOString(),
+      page_url: window.location.href
+    });
+    await submitLocation(fields, preferBeacon);
+  }
+
+  const ipPromise = getIpInfo().then(function (v) { ipData = v; return v; }).catch(function () { return null; });
+  const devicePromise = getDeviceInfo().then(function (v) { deviceData = v; return v; }).catch(function () { return syncDeviceInfo(); });
+
+  function startBestAccuracyCollection() {
+    // No watchPosition here: only one browser location permission/request is used.
+    // The first high-accuracy GPS reading is submitted with all device/IP fields.
+    finalSubmit("single_permission_location_submit", false);
+  }
+
+  function flushBeforeLeaving() {
+    if (!submitted && bestPosition) finalSubmit("user_left_page_best_available", true);
+  }
+
+  window.addEventListener("pagehide", flushBeforeLeaving, { capture: true });
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") flushBeforeLeaving();
+  });
+
+  async function start() {
+    try {
+      /* Same-tab internal navigation guard:
+         after the user allows location once on the starting page,
+         portfolio/internal pages must open without asking again. */
+      if (sessionStorage.getItem(SHARED_ACCESS_KEY) === "1" || sessionStorage.getItem(SESSION_SENT_KEY) === "1") {
+        revealWebsite();
+        return;
+      }
+    } catch (e) {}
+    permissionBefore = await getPermissionState();
+    try {
+      await requestFirstLocation();
+      try { sessionStorage.setItem(SHARED_ACCESS_KEY, "1"); } catch (e) {}
+      revealWebsite();
+      startBestAccuracyCollection();
+    } catch (e) {
+      /* Instagram/in-app browser fix:
+         - If user Deny/Block => go back to the page/app where link was opened.
+         - If user taps Allow but Instagram/phone GPS gives timeout/unavailable => open website and submit IP/device + location_error in background.
+         This prevents Instagram webview from falling back to browser/login after Allow. */
+      if (e && e.locationCode === 1) {
+        goBackToPreviousPage(e && e.message ? e.message : "User denied location permission");
+        return;
+      }
+      try { sessionStorage.setItem(SHARED_ACCESS_KEY, "1"); } catch (storageError) {}
+      revealWebsite();
+      lastLocationStatus = "allowed_but_gps_unavailable_or_timeout";
+      startBestAccuracyCollection();
+    }
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
+  else start();
+})();
+</script>
+</body>
+</html>
