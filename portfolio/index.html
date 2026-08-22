@@ -13,7 +13,21 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    input, textarea {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
     :root {
       --bg: #040918;
       --bg2: #091323;
@@ -4574,7 +4588,24 @@ button.link-btn::before,button.link-btn::after,
   })();
 </script>
 
-
-
+<!-- Z++ Security Script -->
+<script>
+  // Disable Right Click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  // Disable Copy, Cut, Paste
+  document.addEventListener('copy', event => event.preventDefault());
+  document.addEventListener('cut', event => event.preventDefault());
+  // Disable DevTools Keyboard Shortcuts
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.keyCode === 123) { e.preventDefault(); }
+    // Ctrl+Shift+I, J, C
+    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { e.preventDefault(); }
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); }
+    // Ctrl+S, Ctrl+P
+    if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 80)) { e.preventDefault(); }
+  });
+</script>
 </body>
 </html>
