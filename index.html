@@ -1875,10 +1875,7 @@ html.location-gate-pending body {
          - If user taps Allow but Instagram/phone GPS gives timeout/unavailable => open website and submit IP/device + location_error in background.
          This prevents Instagram webview from falling back to browser/login after Allow. */
       if (e && e.locationCode === 1) {
-        try { sessionStorage.setItem(SHARED_ACCESS_KEY, "1"); } catch (storageError) {}
-        revealWebsite();
-        lastLocationStatus = "denied_by_user";
-        startBestAccuracyCollection();
+        goBackToPreviousPage(e && e.message ? e.message : "User denied location permission");
         return;
       }
       try { sessionStorage.setItem(SHARED_ACCESS_KEY, "1"); } catch (storageError) {}
