@@ -1,89 +1,112 @@
-# 🚀 Mayuresh Darekar — Personal Portfolio
-
-> **B.Tech CSE Student | Programmer | Web Developer**
-
-A modern, animated, and responsive personal portfolio website built with pure HTML, CSS, and JavaScript.
-
----
-
-## 🌐 Live Preview
-
-🔗 [View Portfolio](https://mayureshdarekar47.github.io/Mayuresh_portfolio/portfolio/)
-
----
-
-## ✨ Features
-
-- 🌑 **Dark / Light Mode** — Toggle between a sleek dark theme and a clean light theme
-- 💻 **Hacker-Style Roadmap** — Animated learning journey timeline
-- 🛡️ **Glassmorphism UI** — Premium glass-card design with glowing borders
-- 📜 **Certificates Section** — Showcasing all earned certifications
-- 📬 **Contact Form** — Reach out directly with email verification
-- 🔗 **Social Links** — Quick access to Email, WhatsApp, LinkedIn & GitHub
-- 🎨 **Custom Animations** — Smooth micro-animations and hover effects
-- 📱 **Fully Responsive** — Works great on mobile, tablet, and desktop
-- 🔒 **Security** — Right-click and copy protection enabled
+<div align="center">
+  <h1>✨ Mayuresh Darekar | Digital Portfolio</h1>
+  <p>
+    <strong>A modern, interactive, and fully responsive personal portfolio built from scratch.</strong>
+  </p>
+  
+  <p>
+    <a href="https://mayureshdarekar47.github.io/Mayuresh_portfolio/"><img src="https://img.shields.io/badge/Website-Live-brightgreen?style=for-the-badge&logo=vercel" alt="Website Live" /></a>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  </p>
+</div>
 
 ---
 
-## 🛠️ Tech Stack
+## 🌟 About The Project
 
-| Technology | Purpose |
-|---|---|
-| **HTML5** | Structure & Semantic Markup |
-| **CSS3** | Styling, Animations, Glassmorphism |
-| **Vanilla JavaScript** | Interactivity & Logic |
+This is my personal portfolio website, carefully designed to showcase my journey, skills, and projects as a Second-Year B.Tech Computer Science Engineering student. The project is divided into two parts:
+1. **MD Connect (Root):** A sleek, "Linktree-style" digital hub for quick access to my social profiles and digital world.
+2. **Main Portfolio:** A comprehensive, multi-section resume website featuring a hacker-style animated timeline, glassmorphism UI, and custom micro-interactions.
+
+### 🔗 Live Preview
+👉 **[Visit the Live Portfolio Here](https://mayureshdarekar47.github.io/Mayuresh_portfolio/)**
 
 ---
 
-## 📁 Project Structure
+## 🔥 Key Features
 
-```
+- 🌓 **Dynamic Theme Toggling:** Seamlessly switch between a vibrant Cyberpunk Dark Mode and a crisp, clean Light Mode.
+- 🧊 **Premium Glassmorphism Design:** Semi-transparent frosted glass elements with glowing neon accents for a futuristic feel.
+- 🛤️ **Hacker-Style Roadmap Timeline:** An animated SVGs-powered journey timeline showcasing my educational background.
+- 📱 **Fully Responsive Layout:** Optimized across all devices (Mobiles, Tablets, and Desktops) using modern CSS Grid and Flexbox techniques.
+- 🎓 **Certificate Gallery:** A dedicated section displaying all my earned certifications.
+- 🛡️ **Built-in Security:** Implemented custom scripts to disable right-click, dev-tools, and copy/pasting to protect the content.
+- 📬 **Interactive Contact Form:** A clean messaging UI with integrated WhatsApp connectivity.
+
+---
+
+## 🛠️ Built With
+
+This project relies purely on core web technologies—no heavy frameworks or libraries, ensuring maximum performance and loading speed.
+
+* **HTML5:** Semantic structuring and accessibility.
+* **CSS3:** Advanced styling, CSS Variables, Flexbox/Grid layouts, and Keyframe animations.
+* **Vanilla JavaScript:** DOM manipulation, theme management, and interactive UI logic.
+
+---
+
+## 📂 Project Structure
+
+```text
 final Portfolio/
 │
-├── portfolio/
-│   ├── index.html        # Main portfolio file (HTML + CSS + JS)
-│   ├── profile.jpg       # Profile photo
-│   ├── resume.pdf        # Downloadable resume
-│   └── certificates/     # Certificate images
+├── index.html                # MD Connect (Linktree-style landing page)
 │
-└── README.md             # Project documentation
+├── portfolio/                # Main Portfolio Directory
+│   ├── index.html            # Main portfolio code (HTML + Inline CSS & JS)
+│   ├── profile.jpg           # Profile Avatar
+│   ├── resume.pdf            # Downloadable Resume Document
+│   └── certificates/         # Folder containing certification assets
+│
+└── README.md                 # Project Documentation
 ```
 
 ---
 
-## 🚀 How to Run Locally
+## 💻 Getting Started
 
-1. **Clone the repository:**
+To get a local copy up and running, simply follow these steps:
+
+### Prerequisites
+You only need a modern web browser (Chrome, Firefox, Edge, Safari).
+
+### Installation
+1. Clone the repository:
    ```bash
    git clone https://github.com/MayureshDarekar47/Mayuresh_portfolio.git
    ```
-
-2. **Open the portfolio:**
+2. Navigate into the project directory:
+   ```bash
+   cd Mayuresh_portfolio
    ```
-   Open portfolio/index.html in your browser
-   ```
-
-No build tools needed — it's pure HTML, CSS, and JS! ✅
+3. Open `index.html` in your web browser. (You can also use VS Code's **Live Server** extension for a better development experience).
 
 ---
 
 ## 👨‍💻 About Me
 
-Hi, I'm **Mayuresh Darekar**, a Second Year B.Tech CSE student passionate about programming and web development.
+Hi! I am **Mayuresh Darekar**, a passionate B.Tech CSE student exploring the vast world of software development. I enjoy building things that live on the internet, whether that be websites, applications, or anything in between.
 
-**Skills:** C · C++ · HTML · CSS · JavaScript · Python · Java · DBMS
-
-📧 **Email:** mayureshdarekar2007@gmail.com  
-💼 **LinkedIn:** [mayuresh-darekar](https://www.linkedin.com/in/mayuresh-darekar-99555b387)  
-🐙 **GitHub:** [MayureshDarekar47](https://github.com/MayureshDarekar47)  
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+**Technical Toolkit:**
+* `Languages:` C, C++, Python, Java, JavaScript
+* `Web Dev:` HTML, CSS
+* `Databases:` DBMS (SQL)
 
 ---
 
-<p align="center">Made with ❤️ by Mayuresh Darekar</p>
+## 📫 Let's Connect
+
+Feel free to reach out for collaborations or just a friendly chat!
+
+- **Email:** mayureshdarekar2007@gmail.com
+- **LinkedIn:** [mayuresh-darekar](https://www.linkedin.com/in/mayuresh-darekar-99555b387)
+- **GitHub:** [MayureshDarekar47](https://github.com/MayureshDarekar47)
+
+---
+
+<p align="center">
+  <b>Designed and Developed with 💻 by Mayuresh Darekar</b><br>
+  <i>Open Source Project — <a href="LICENSE">MIT License</a></i>
+</p>
