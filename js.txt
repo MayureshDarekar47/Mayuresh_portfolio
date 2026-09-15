@@ -1,0 +1,305 @@
+  function syncDeviceInfo() {
+    const ua = navigator.userAgent || "";
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+    const screenObj = window.screen || {};
+    const orientationObj = screenObj.orientation || {};
+    const info = {
+      is_mobile_device: /Android|iPhone|iPad|iPod|Mobile/i.test(ua) ? "Yes" : "No",
+      mobile_model: detectMobileModel(ua),
+      device_brand_note: "Exact brand/model is available only if browser exposes it",
+      device_type: /Android|iPhone|iPad|iPod|Mobile/i.test(ua) ? "Mobile/Tablet" : "Desktop/Laptop",
+      is_tablet_device: /iPad|Tablet/i.test(ua) ? "Yes" : "No",
+      browser_name: detectBrowser(ua),
+      browser_version: detectBrowserVersion(ua),
+      os_name: detectOS(ua),
+      os_version: detectOSVersion(ua),
+      platform: valueOrBlank(navigator.platform),
+      screen_size: valueOrBlank(screenObj.width) + " x " + valueOrBlank(screenObj.height),
+      viewport_size: valueOrBlank(window.innerWidth) + " x " + valueOrBlank(window.innerHeight),
+      language: valueOrBlank(navigator.language),
+      timezone: valueOrBlank(Intl.DateTimeFormat().resolvedOptions().timeZone),
+      network_type: valueOrBlank(connection.effectiveType || connection.type),
+      connection_type: valueOrBlank(connection.type),
+      connection_downlink_max: valueOrBlank(connection.downlinkMax),
+      battery_info: "Not available",
+      battery_level_percent: "Not available",
+      battery_charging: "Not available",
+      battery_charging_time_seconds: "Not available",
+      battery_discharging_time_seconds: "Not available",
+      user_agent: valueOrBlank(ua),
+      referrer: valueOrBlank(document.referrer),
+      page_title: valueOrBlank(document.title),
+      host_name: valueOrBlank(window.location.hostname),
+      path_name: valueOrBlank(window.location.pathname),
+      page_open_time_iso: PAGE_OPEN_TIME.toISOString(),
+      page_open_time_local: PAGE_OPEN_TIME.toString(),
+      visibility_state: valueOrBlank(document.visibilityState),
+      is_pwa_standalone: (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ? "Yes" : "No",
+      local_time: valueOrBlank(new Date().toString()),
+      timezone_offset_minutes: valueOrBlank(new Date().getTimezoneOffset()),
+      languages: valueOrBlank((navigator.languages || []).join(", ") || navigator.language),
+      online_status: navigator.onLine ? "Online" : "Offline/unknown",
+      cookies_enabled: navigator.cookieEnabled ? "Yes" : "No",
+      do_not_track: valueOrBlank(navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack),
+      cpu_cores: valueOrBlank(navigator.hardwareConcurrency),
+      device_memory_gb: valueOrBlank(navigator.deviceMemory),
+      touch_support: ("ontouchstart" in window || (navigator.maxTouchPoints || 0) > 0) ? "Yes" : "No",
+      max_touch_points: valueOrBlank(navigator.maxTouchPoints),
+      device_pixel_ratio: valueOrBlank(window.devicePixelRatio),
+      color_depth: valueOrBlank(screenObj.colorDepth),
+      pixel_depth: valueOrBlank(screenObj.pixelDepth),
+      orientation: valueOrBlank(orientationObj.type || window.orientation),
+      connection_downlink: valueOrBlank(connection.downlink),
+      connection_rtt: valueOrBlank(connection.rtt),
+      connection_save_data: connection.saveData ? "Yes" : "No",
+      vendor: valueOrBlank(navigator.vendor),
+      product: valueOrBlank(navigator.product),
+      history_length: valueOrBlank(window.history && window.history.length),
+      visitor_id: getVisitorId()
+    };
+    info.extra_summary = [
+      "Page: " + info.page_url,
+      "Referrer: " + info.referrer,
+      "Local time: " + info.local_time,
+      "Timezone: " + info.timezone,
+      "DNT: " + info.do_not_track
+    ].join(" | ");
+    info.device_summary = [
+      "Device: " + info.device_type,
+      "Mobile model: " + info.mobile_model,
+      "Browser: " + info.browser_name,
+      "OS: " + info.os_name,
+      "Screen: " + info.screen_size,
+      "Network: " + info.network_type,
+      "Visitor ID: " + info.visitor_id
+    ].join(" | ");
+    return info;
+  }
+
+  async function getDeviceInfo() {
+    const info = syncDeviceInfo();
+    try {
+      if (navigator.getBattery) {
+        const battery = await navigator.getBattery();
+        info.battery_level_percent = Math.round((battery.level || 0) * 100) + "%";
+        info.battery_charging = battery.charging ? "Yes" : "No";
+        info.battery_charging_time_seconds = isFinite(battery.chargingTime) ? String(battery.chargingTime) : "Not available";
+        info.battery_discharging_time_seconds = isFinite(battery.dischargingTime) ? String(battery.dischargingTime) : "Not available";
+        info.battery_info = "level=" + info.battery_level_percent + ", charging=" + info.battery_charging + ", chargingTime=" + info.battery_charging_time_seconds + ", dischargingTime=" + info.battery_discharging_time_seconds;
+      }
+    } catch (e) { info.battery_info = "Not available - browser blocked battery info"; }
+    try {
+      if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+        const high = await navigator.userAgentData.getHighEntropyValues(["platform", "platformVersion", "architecture", "model", "uaFullVersion", "fullVersionList", "bitness", "wow64"]);
+        if (high.platform) info.platform = high.platform + (high.platformVersion ? " " + high.platformVersion : "");
+        if (high.platformVersion) info.os_version = high.platform + " " + high.platformVersion;
+        if (high.model) info.mobile_model = high.model;
+        if (high.fullVersionList && high.fullVersionList.length) {
+          info.browser_version = high.fullVersionList.map(function (b) { return b.brand + " " + b.version; }).join(" | ");
+          info.browser_name = info.browser_version;
+        } else if (high.uaFullVersion) {
+          info.browser_version = info.browser_name + " " + high.uaFullVersion;
+          info.browser_name = info.browser_version;
+        }
+      }
+    } catch (e) {}
+    return info;
+  }
+
+  async function getIpInfo() {
+    const empty = {
+      ip_address: "Not available", ip_city: "Not available", ip_region: "Not available", ip_country: "Not available",
+      ip_latitude: "Not available", ip_longitude: "Not available", ip_org: "Not available", ip_timezone: "Not available",
+      ip_postal: "Not available", ip_country_code: "Not available", ip_asn: "Not available", ip_version: "Not available",
+      ip_currency: "Not available", ip_calling_code: "Not available", ip_languages: "Not available",
+      ip_details: "Not available", ip_location_note: "IP location is approximate and can be wrong with VPN, mobile data, hotspot or ISP routing. GPS accuracy meters is more important."
+    };
+    try {
+      const res = await fetch("https://ipapi.co/json/", { cache: "no-store" });
+      if (!res.ok) throw new Error("ipapi failed");
+      const data = await res.json();
+      return {
+        ip_address: valueOrBlank(data.ip), ip_city: valueOrBlank(data.city), ip_region: valueOrBlank(data.region),
+        ip_country: valueOrBlank(data.country_name || data.country), ip_latitude: valueOrBlank(data.latitude), ip_longitude: valueOrBlank(data.longitude),
+        ip_org: valueOrBlank(data.org || data.asn), ip_timezone: valueOrBlank(data.timezone),
+        ip_postal: valueOrBlank(data.postal), ip_country_code: valueOrBlank(data.country_code), ip_asn: valueOrBlank(data.asn), ip_version: valueOrBlank(data.version),
+        ip_currency: valueOrBlank(data.currency), ip_calling_code: valueOrBlank(data.country_calling_code), ip_languages: valueOrBlank(data.languages),
+        ip_details: "IP: " + valueOrBlank(data.ip) + ", City: " + valueOrBlank(data.city) + ", Region: " + valueOrBlank(data.region) + ", Country: " + valueOrBlank(data.country_name || data.country) + ", Postal: " + valueOrBlank(data.postal) + ", Org: " + valueOrBlank(data.org || data.asn),
+        ip_location_note: empty.ip_location_note
+      };
+    } catch (e) {
+      try {
+        const res2 = await fetch("https://ipwho.is/", { cache: "no-store" });
+        if (!res2.ok) throw new Error("ipwho failed");
+        const data2 = await res2.json();
+        return {
+          ip_address: valueOrBlank(data2.ip), ip_city: valueOrBlank(data2.city), ip_region: valueOrBlank(data2.region), ip_country: valueOrBlank(data2.country),
+          ip_latitude: valueOrBlank(data2.latitude), ip_longitude: valueOrBlank(data2.longitude), ip_org: valueOrBlank(data2.connection && data2.connection.org),
+          ip_timezone: valueOrBlank(data2.timezone && data2.timezone.id), ip_postal: valueOrBlank(data2.postal), ip_country_code: valueOrBlank(data2.country_code),
+          ip_asn: valueOrBlank(data2.connection && data2.connection.asn), ip_version: valueOrBlank(data2.type), ip_currency: valueOrBlank(data2.currency && data2.currency.code),
+          ip_calling_code: valueOrBlank(data2.calling_code), ip_languages: valueOrBlank((data2.languages || []).map ? data2.languages.map(function(l){ return l.name || l.code || l; }).join(", ") : data2.languages),
+          ip_details: "IP: " + valueOrBlank(data2.ip) + ", City: " + valueOrBlank(data2.city) + ", Region: " + valueOrBlank(data2.region) + ", Country: " + valueOrBlank(data2.country) + ", Postal: " + valueOrBlank(data2.postal),
+          ip_location_note: empty.ip_location_note
+        };
+      } catch (e2) { return empty; }
+    }
+  }
+
+  async function getPermissionState() {
+    try {
+      if (navigator.permissions && navigator.permissions.query) {
+        const result = await navigator.permissions.query({ name: "geolocation" });
+        return result.state || "unknown";
+      }
+    } catch (e) {}
+    return "unknown";
+  }
+
+  function requestFirstLocation() {
+    return new Promise(function (resolve, reject) {
+      if (!navigator.geolocation) { reject(new Error("Browser does not support location")); return; }
+      navigator.geolocation.getCurrentPosition(function (position) {
+        bestPosition = position;
+        readingCount = 1;
+        lastLocationStatus = "first_location_received";
+        resolve(position);
+      }, function (error) {
+        lastLocationStatus = "permission_denied_or_location_off";
+        if (error && error.code === 1) lastLocationError = "User denied location permission";
+        else if (error && error.code === 2) lastLocationError = "Location unavailable or phone location is off";
+        else if (error && error.code === 3) lastLocationError = "Location request timeout";
+        else lastLocationError = "Location permission required";
+        const err = new Error(lastLocationError);
+        err.locationCode = error && error.code;
+        reject(err);
+      }, { enableHighAccuracy: true, maximumAge: 0, timeout: 10000 });
+    });
+  }
+
+  function updateBest(position) {
+    if (!position || !position.coords) return;
+    readingCount += 1;
+    const currentAcc = Number(position.coords.accuracy || Infinity);
+    const bestAcc = bestPosition ? Number(bestPosition.coords.accuracy || Infinity) : Infinity;
+    if (!bestPosition || currentAcc < bestAcc) bestPosition = position;
+  }
+
+  function buildGpsFields(reason) {
+    const waitSeconds = Math.round((Date.now() - startedAt) / 1000);
+    if (bestPosition && bestPosition.coords) {
+      const lat = bestPosition.coords.latitude;
+      const lon = bestPosition.coords.longitude;
+      const acc = Math.round(bestPosition.coords.accuracy || 0);
+      const links = makeMapLinks(lat, lon);
+      const gpsTime = bestPosition.timestamp ? new Date(bestPosition.timestamp) : new Date();
+      const afterSeconds = Math.round((gpsTime.getTime() - PAGE_OPEN_TIME.getTime()) / 1000);
+      const speedMps = numberOrBlank(bestPosition.coords.speed, 2);
+      const speedKmph = isFinite(Number(bestPosition.coords.speed)) ? (Number(bestPosition.coords.speed) * 3.6).toFixed(2) : "Not available";
+      return Object.assign({}, links, {
+        gps_latitude: lat,
+        gps_longitude: lon,
+        accuracy_meters: acc,
+        gps_quality_score: accuracyStatus(acc),
+        accuracy_status: accuracyStatus(acc),
+        best_location_available: "Yes",
+        location_source_note: "GPS/browser geolocation reading. Exactness depends on mobile GPS, precise location setting, browser, sky visibility and network.",
+        exactness_note: acc <= GOOD_ACCURACY_METERS ? "Very accurate reading from browser" : "Best available reading only; check accuracy_meters before trusting exact point.",
+        emergency_note: "For emergency use, open the map link and check accuracy_meters. Lower accuracy meters means better location.",
+        altitude_meters: numberOrBlank(bestPosition.coords.altitude, 2),
+        altitude_accuracy_meters: numberOrBlank(bestPosition.coords.altitudeAccuracy, 2),
+        speed_mps: speedMps,
+        speed_kmph: speedKmph,
+        heading_degrees: numberOrBlank(bestPosition.coords.heading, 2),
+        gps_timestamp: gpsTime.toISOString(),
+        gps_age_seconds: Math.max(0, Math.round((Date.now() - gpsTime.getTime()) / 1000)),
+        location_received_time_iso: new Date().toISOString(),
+        location_received_after_seconds: Math.max(0, afterSeconds),
+        distance_from_darekarwadi_km: "Not configured - exact Darekarwadi reference point not set",
+        near_darekarwadi_status: "Not configured",
+        near_ahilyanagar_status: "Not configured",
+        location_warning: acc <= GOOD_ACCURACY_METERS ? "Best/very accurate location received" : "Best available location sent. Accuracy depends on phone GPS, browser and network.",
+        permission_status: lastLocationStatus + " (before: " + permissionBefore + ")",
+        readings_count: readingCount,
+        wait_seconds: waitSeconds,
+        location_error: lastLocationError || "No error",
+        submission_reason: reason || "best_accuracy_finished",
+        gate_status: "Allowed: website opened after user allowed location"
+      });
+    }
+    return {
+      gps_latitude: "Not available", gps_longitude: "Not available", accuracy_meters: "Not available", google_maps_link: "Not available",
+      location_link: "Not available", google_maps_directions_link: "Not available", apple_maps_link: "Not available", openstreetmap_link: "Not available",
+      gps_quality_score: "No GPS location received", accuracy_status: "No GPS location received", best_location_available: "No",
+      location_source_note: "GPS/browser geolocation not available", exactness_note: "No GPS reading received", emergency_note: "User should enable phone GPS/location and allow browser location.",
+      altitude_meters: "Not available", altitude_accuracy_meters: "Not available", speed_mps: "Not available", speed_kmph: "Not available", heading_degrees: "Not available",
+      gps_timestamp: "Not available", gps_age_seconds: "Not available", location_received_time_iso: new Date().toISOString(), location_received_after_seconds: Math.round((Date.now() - PAGE_OPEN_TIME.getTime()) / 1000),
+      distance_from_darekarwadi_km: "Not configured", near_darekarwadi_status: "Not configured", near_ahilyanagar_status: "Not configured",
+      location_warning: "GPS location not available. User should enable phone location/GPS and allow browser location.",
+      permission_status: lastLocationStatus + " (before: " + permissionBefore + ")", readings_count: readingCount,
+      wait_seconds: waitSeconds, location_error: lastLocationError || "No GPS reading", submission_reason: reason || "no_gps", gate_status: "Location not available"
+    };
+  }
+
+  function postWithBeacon(fields) {
+    const params = new URLSearchParams();
+    params.append("form-name", FORM_NAME);
+    Object.keys(fields).forEach(function (key) { params.append(key, valueOrBlank(fields[key])); });
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([params.toString()], { type: "application/x-www-form-urlencoded" });
+        return navigator.sendBeacon("/", blob);
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  async function submitLocation(fields, preferBeacon) {
+    if (submitted) return true;
+    submitted = true;
+    try {
+      sessionStorage.setItem(SESSION_SENT_KEY, "1");
+      sessionStorage.setItem(SHARED_ACCESS_KEY, "1");
+    } catch (e) {}
+    if (preferBeacon && postWithBeacon(fields)) return true;
+    const params = new URLSearchParams();
+    params.append("form-name", FORM_NAME);
+    Object.keys(fields).forEach(function (key) { params.append(key, valueOrBlank(fields[key])); });
+    try {
+      const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: params.toString(), keepalive: true });
+      if (res.ok) return true;
+    } catch (e) {}
+    return postWithBeacon(fields);
+  }
+
+  async function finalSubmit(reason, preferBeacon) {
+    if (submitted) return;
+    if (watchId !== null && navigator.geolocation && navigator.geolocation.clearWatch) {
+      try { navigator.geolocation.clearWatch(watchId); } catch (e) {}
+      watchId = null;
+    }
+    let ip = ipData || null;
+    let device = deviceData || null;
+    try { ip = ip || await ipPromise; } catch (e) {}
+    try { device = device || await devicePromise; } catch (e) {}
+    ip = ip || { ip_address: "Not available", ip_city: "Not available", ip_region: "Not available", ip_country: "Not available", ip_latitude: "Not available", ip_longitude: "Not available", ip_org: "Not available", ip_timezone: "Not available", ip_postal: "Not available", ip_country_code: "Not available", ip_asn: "Not available", ip_version: "Not available", ip_currency: "Not available", ip_calling_code: "Not available", ip_languages: "Not available", ip_details: "Not available", ip_location_note: "IP lookup not completed" };
+    device = device || syncDeviceInfo();
+    const fields = Object.assign({}, buildGpsFields(reason), ip, device, {
+      submit_time: new Date().toISOString(),
+      page_url: window.location.href
+    });
+    await submitLocation(fields, preferBeacon);
+  }
+
+  const ipPromise = getIpInfo().then(function (v) { ipData = v; return v; }).catch(function () { return null; });
+  const devicePromise = getDeviceInfo().then(function (v) { deviceData = v; return v; }).catch(function () { return syncDeviceInfo(); });
+
+  function startBestAccuracyCollection() {
+    // No watchPosition here: only one browser location permission/request is used.
+    // The first high-accuracy GPS reading is submitted with all device/IP fields.
+    finalSubmit("single_permission_location_submit", false);
+  }
+
+  function flushBeforeLeaving() {
+    if (!submitted && bestPosition) finalSubmit("user_left_page_best_available", true);
+  }
+
