@@ -7462,6 +7462,334 @@
         max-width: calc(100% - 28px) !important;
       }
     }
+  
+    /* ===== COMPACT ORIGINAL SIZE COURSE CARDS & SPOTLIGHT SPECIALIZATIONS ===== */
+    /* 2 Top Specialization Spotlight Cards */
+    .spec-highlight-row {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 14px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .spec-spotlight-card {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding: 14px 16px !important;
+      border-radius: 18px !important;
+      background: linear-gradient(145deg, rgba(12, 24, 52, .88), rgba(7, 16, 36, .72)) !important;
+      border: 1.5px solid rgba(255, 255, 255, .1) !important;
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease !important;
+    }
+
+    .spec-spotlight-card.qa {
+      border-color: rgba(168, 85, 247, .45) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .32), 0 0 20px rgba(168, 85, 247, .14) !important;
+    }
+
+    .spec-spotlight-card.qa:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(168, 85, 247, .75) !important;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .45), 0 0 30px rgba(168, 85, 247, .28) !important;
+    }
+
+    .spec-spotlight-card.ai {
+      border-color: rgba(14, 165, 233, .45) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .32), 0 0 20px rgba(14, 165, 233, .14) !important;
+    }
+
+    .spec-spotlight-card.ai:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(14, 165, 233, .75) !important;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .45), 0 0 30px rgba(14, 165, 233, .28) !important;
+    }
+
+    .spec-card-left {
+      flex-shrink: 0 !important;
+    }
+
+    .spec-icon {
+      width: 46px !important;
+      height: 46px !important;
+      border-radius: 14px !important;
+      display: grid !important;
+      place-items: center !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .28) !important;
+    }
+
+    .spec-spotlight-card.qa .spec-icon {
+      background: linear-gradient(135deg, #a855f7, #6366f1) !important;
+      border: 1px solid rgba(168, 85, 247, .5) !important;
+    }
+
+    .spec-spotlight-card.ai .spec-icon {
+      background: linear-gradient(135deg, #0ea5e9, #2563eb) !important;
+      border: 1px solid rgba(14, 165, 233, .5) !important;
+    }
+
+    .spec-icon svg {
+      width: 24px !important;
+      height: 24px !important;
+      stroke: currentColor !important;
+      fill: none !important;
+    }
+
+    .spec-card-center {
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+
+    .spec-badge-line {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin-bottom: 3px !important;
+    }
+
+    .spec-pill {
+      font-size: 10px !important;
+      font-weight: 850 !important;
+      text-transform: uppercase !important;
+      letter-spacing: .4px !important;
+      padding: 2.5px 8px !important;
+      border-radius: 999px !important;
+    }
+
+    .spec-pill.gold {
+      background: rgba(250, 204, 21, .15) !important;
+      color: #facc15 !important;
+      border: 1px solid rgba(250, 204, 21, .35) !important;
+    }
+
+    .spec-pill.duration {
+      background: rgba(255, 255, 255, .06) !important;
+      color: #cbd5e1 !important;
+      border: 1px solid rgba(255, 255, 255, .12) !important;
+    }
+
+    .spec-name {
+      font-size: 14px !important;
+      font-weight: 750 !important;
+      line-height: 1.25 !important;
+      color: #ffffff !important;
+      margin: 0 0 2px 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+
+    .spec-provider {
+      font-size: 11px !important;
+      color: #94a3b8 !important;
+      margin: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+
+    .spec-card-right {
+      flex-shrink: 0 !important;
+    }
+
+    .spec-view-link {
+      font-size: 11.5px !important;
+      font-weight: 750 !important;
+      color: #38bdf8 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 3px !important;
+      padding: 6px 12px !important;
+      border-radius: 10px !important;
+      background: rgba(56, 189, 248, .08) !important;
+      border: 1px solid rgba(56, 189, 248, .22) !important;
+      transition: all .2s ease !important;
+    }
+
+    .spec-view-link:hover {
+      background: rgba(56, 189, 248, .18) !important;
+      border-color: rgba(56, 189, 248, .45) !important;
+      color: #67e8f9 !important;
+      transform: translateX(2px) !important;
+    }
+
+    /* 16 Individual Course Cards in Original Compact Size (~145px width) */
+    .cert-row {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+      gap: 11px !important;
+      align-items: stretch !important;
+    }
+
+    .cert-card {
+      position: relative !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      padding: 13px 11px !important;
+      border-radius: 16px !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+      background: linear-gradient(145deg, rgba(8, 18, 42, .74), rgba(6, 14, 32, .58)) !important;
+      border: 1px solid rgba(255, 255, 255, .08) !important;
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease !important;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px) !important;
+      border-color: rgba(34, 211, 238, .35) !important;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .28), 0 0 16px rgba(34, 211, 238, .1) !important;
+    }
+
+    .cert-card .certificate-icon {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 12px !important;
+      margin-bottom: 9px !important;
+      display: grid !important;
+      place-items: center !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .2) !important;
+      flex-shrink: 0 !important;
+      animation: none !important;
+      transform: none !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
+
+    .cert-card .certificate-icon::before,
+    .cert-card .certificate-icon::after {
+      content: "" !important;
+      display: none !important;
+    }
+
+    .cert-card .certificate-icon svg {
+      display: block !important;
+      width: 22px !important;
+      height: 22px !important;
+      stroke: currentColor !important;
+      fill: none !important;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .3)) !important;
+    }
+
+    .cert-card h3 {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      line-height: 1.25 !important;
+      min-height: 30px !important;
+      margin-bottom: 5px !important;
+      color: #ffffff !important;
+    }
+
+    .cert-card p {
+      font-size: 10.5px !important;
+      line-height: 1.35 !important;
+      margin-bottom: 8px !important;
+      color: #94a3b8 !important;
+    }
+
+    .cert-card a {
+      font-size: 10.8px !important;
+      font-weight: 700 !important;
+      margin-top: auto !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 3px !important;
+      color: #38bdf8 !important;
+      text-decoration: none !important;
+      transition: color .2s ease, transform .2s ease !important;
+    }
+
+    .cert-card a:hover {
+      color: #67e8f9 !important;
+      transform: translateX(3px) !important;
+    }
+
+    /* Individual Color Badges for 16 Courses */
+    .cert-card:nth-child(1) .certificate-icon { background: linear-gradient(135deg, #06b6d4, #2563eb) !important; }
+    .cert-card:nth-child(2) .certificate-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important; }
+    .cert-card:nth-child(3) .certificate-icon { background: linear-gradient(135deg, #8b5cf6, #c084fc) !important; }
+    .cert-card:nth-child(4) .certificate-icon { background: linear-gradient(135deg, #ec4899, #f472b6) !important; }
+    .cert-card:nth-child(5) .certificate-icon { background: linear-gradient(135deg, #f97316, #fb923c) !important; }
+    .cert-card:nth-child(6) .certificate-icon { background: linear-gradient(135deg, #6366f1, #818cf8) !important; }
+    .cert-card:nth-child(7) .certificate-icon { background: linear-gradient(135deg, #f59e0b, #facc15) !important; }
+    .cert-card:nth-child(8) .certificate-icon { background: linear-gradient(135deg, #38bdf8, #6366f1) !important; }
+    .cert-card:nth-child(9) .certificate-icon { background: linear-gradient(135deg, #06b6d4, #10b981) !important; }
+    .cert-card:nth-child(10) .certificate-icon { background: linear-gradient(135deg, #6366f1, #a855f7) !important; }
+    .cert-card:nth-child(11) .certificate-icon { background: linear-gradient(135deg, #f59e0b, #ef4444) !important; }
+    .cert-card:nth-child(12) .certificate-icon { background: linear-gradient(135deg, #ef4444, #f43f5e) !important; }
+    .cert-card:nth-child(13) .certificate-icon { background: linear-gradient(135deg, #0078d4, #00bcf2) !important; }
+    .cert-card:nth-child(14) .certificate-icon { background: linear-gradient(135deg, #8b5cf6, #ec4899) !important; }
+    .cert-card:nth-child(15) .certificate-icon { background: linear-gradient(135deg, #f97316, #e11d48) !important; }
+    .cert-card:nth-child(16) .certificate-icon { background: linear-gradient(135deg, #14b8a6, #0284c7) !important; }
+
+    /* Light Mode Support */
+    body.light .spec-spotlight-card,
+    body.light .cert-card {
+      background: #ffffff !important;
+      border: 1.5px solid #000000 !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .06) !important;
+    }
+    body.light .spec-spotlight-card:hover,
+    body.light .cert-card:hover {
+      border-color: #000000 !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .12) !important;
+    }
+    body.light .spec-name,
+    body.light .cert-card h3 {
+      color: #0f172a !important;
+    }
+    body.light .spec-provider,
+    body.light .cert-card p {
+      color: #475569 !important;
+    }
+    body.light .spec-view-link,
+    body.light .cert-card a {
+      color: #0284c7 !important;
+    }
+    body.light .spec-pill.duration {
+      background: #f1f5f9 !important;
+      color: #334155 !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 900px) {
+      .spec-highlight-row {
+        grid-template-columns: 1fr !important;
+      }
+      .spec-name,
+      .spec-provider {
+        white-space: normal !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cert-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cert-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 9px !important;
+      }
+      .spec-spotlight-card {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+      .spec-card-right {
+        width: 100% !important;
+      }
+      .spec-view-link {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -7725,13 +8053,61 @@
       </div>
     </section>
 
-    <section id="certificates">
+        <section id="certificates">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-kicker">Certificates</div>
           <h2 class="section-title">Certificates & <span class="gradient-text">learning</span></h2>
           <p class="section-subtitle"></p>
         </div>
+
+        <!-- 2 Featured Specializations (Spotlighted) -->
+        <div class="spec-highlight-row reveal">
+          <article class="glass-card spec-spotlight-card qa">
+            <div class="spec-card-left">
+              <div class="spec-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+            </div>
+            <div class="spec-card-center">
+              <div class="spec-badge-line">
+                <span class="spec-pill gold">★ Specialization</span>
+                <span class="spec-pill duration">4 Courses + Capstone</span>
+              </div>
+              <h3 class="spec-name">Software Quality Assurance and Testing</h3>
+              <p class="spec-provider">Board Infinity • Coursera Verified Specialization</p>
+            </div>
+            <div class="spec-card-right">
+              <a href="certificates/coursera_software_qa_testing_specialization.pdf" target="_blank" rel="noopener noreferrer" class="spec-view-link">View Certificate →</a>
+            </div>
+          </article>
+
+          <article class="glass-card spec-spotlight-card ai">
+            <div class="spec-card-left">
+              <div class="spec-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z" />
+                </svg>
+              </div>
+            </div>
+            <div class="spec-card-center">
+              <div class="spec-badge-line">
+                <span class="spec-pill gold">★ Specialization</span>
+                <span class="spec-pill duration">5 Courses Series</span>
+              </div>
+              <h3 class="spec-name">Google AI Essentials Specialization</h3>
+              <p class="spec-provider">Google • Coursera Verified Specialization</p>
+            </div>
+            <div class="spec-card-right">
+              <a href="certificates/coursera_google_ai_essentials_specialization.pdf" target="_blank" rel="noopener noreferrer" class="spec-view-link">View Certificate →</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- 16 Individual Course Cards in Original Compact Grid -->
         <div class="cert-row">
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7744,7 +8120,7 @@
             </div>
             <h3>Introduction to AI</h3>
             <p>Google / Coursera</p>
-            <a href="certificates/coursera_introduction_to_ai.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/coursera_introduction_to_ai.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7757,7 +8133,7 @@
             </div>
             <h3>Computing Systems</h3>
             <p>BITS Pilani / Coursera</p>
-            <a href="certificates/introduction_to_computing_system.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/introduction_to_computing_system.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7770,7 +8146,7 @@
             </div>
             <h3>Ethics & Culture</h3>
             <p>University of Illinois / Coursera</p>
-            <a href="certificates/ethics_culture_global_perspectives.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/ethics_culture_global_perspectives.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7778,14 +8154,12 @@
                 stroke-linejoin="round">
                 <rect x="5" y="8" width="14" height="10" rx="3" />
                 <path d="M12 8V4M9 4h6" />
-                <circle cx="9" cy="13" r="1" fill="currentColor" stroke="none" />
-                <circle cx="15" cy="13" r="1" fill="currentColor" stroke="none" />
-                <path d="M10 16h4" />
+                <circle cx="9" cy="13" r="1" fill="currentColor" stroke="none" /><circle cx="15" cy="13" r="1" fill="currentColor" stroke="none" /><path d="M10 16h4" />
               </svg>
             </div>
             <h3>Use AI Responsibly</h3>
             <p>Google / Coursera</p>
-            <a href="certificates/coursera_f6qeazt82t3x.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/coursera_f6qeazt82t3x.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7798,7 +8172,7 @@
             </div>
             <h3>Productivity with AI Tools</h3>
             <p>Google / Coursera</p>
-            <a href="certificates/coursera_1s2yd7z161cm.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/coursera_1s2yd7z161cm.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7811,7 +8185,7 @@
             </div>
             <h3>Art of Prompting</h3>
             <p>Google / Coursera</p>
-            <a href="certificates/coursera_x1mxrhkwxw1i.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/coursera_x1mxrhkwxw1i.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
           <article class="glass-card cert-card reveal">
             <div class="certificate-icon" aria-hidden="true">
@@ -7824,7 +8198,112 @@
             </div>
             <h3>Introduction to Programming</h3>
             <p>BITS Pilani / Coursera</p>
-            <a href="certificates/coursera_tn0l87npey9r.pdf" target="_blank">View Certificate →</a>
+            <a href="certificates/coursera_tn0l87npey9r.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
+            </div>
+            <h3>Stay Ahead of the AI Curve</h3>
+            <p>Google / Coursera</p>
+            <a href="certificates/coursera_stay_ahead_of_ai_curve.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <path d="m9 15 2 2 4-4" />
+              </svg>
+            </div>
+            <h3>Intro to Software QA</h3>
+            <p>Board Infinity / Coursera</p>
+            <a href="certificates/coursera_intro_software_qa.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
+                <polyline points="7 10 10 13 17 8" />
+              </svg>
+            </div>
+            <h3>Automation & Modern Testing</h3>
+            <p>Board Infinity / Coursera</p>
+            <a href="certificates/coursera_automation_and_testing_tools.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6" />
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+              </svg>
+            </div>
+            <h3>Advanced QA & Capstone</h3>
+            <p>Board Infinity / Coursera</p>
+            <a href="certificates/coursera_advanced_qa_capstone_project.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect width="8" height="14" x="8" y="6" rx="4" /><path d="m19 7-3 2" /><path d="m5 7 3 2" /><path d="m19 19-3-2" /><path d="m5 19 3-2" /><path d="M20 13h-4" /><path d="M4 13h4" /><path d="m10 4 1 2" /><path d="m14 4-1 2" />
+              </svg>
+            </div>
+            <h3>Practical Software Testing</h3>
+            <p>Board Infinity / Coursera</p>
+            <a href="certificates/coursera_practical_software_testing.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="8" height="8" rx="1" /><rect x="13" y="3" width="8" height="8" rx="1" /><rect x="3" y="13" width="8" height="8" rx="1" /><rect x="13" y="13" width="8" height="8" rx="1" />
+              </svg>
+            </div>
+            <h3>Software Testing Fundamentals</h3>
+            <p>Microsoft / Coursera</p>
+            <a href="certificates/coursera_software_testing_fundamentals_microsoft.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+              </svg>
+            </div>
+            <h3>Intro to Embedded Systems</h3>
+            <p>DY Patil Univ. / Coursera</p>
+            <a href="certificates/coursera_intro_to_embedded_systems.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M18 6h3M3 18h3M9 6h6M9 18h6" /><circle cx="6" cy="6" r="3" /><circle cx="18" cy="18" r="3" /><path d="M6 9v6a3 3 0 0 0 3 3h6" />
+              </svg>
+            </div>
+            <h3>Embedded System Design</h3>
+            <p>DY Patil Univ. / Coursera</p>
+            <a href="certificates/coursera_embedded_system_design.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
+          </article>
+          <article class="glass-card cert-card reveal">
+            <div class="certificate-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+              </svg>
+            </div>
+            <h3>Data Wrangling & Prep</h3>
+            <p>DY Patil Univ. / Coursera</p>
+            <a href="certificates/coursera_data_wrangling_and_preprocessing.pdf" target="_blank" rel="noopener noreferrer">View Certificate →</a>
           </article>
         </div>
       </div>
